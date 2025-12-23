@@ -15,7 +15,7 @@ export function FounderSection() {
             <div className="lg:col-span-2">
               <div className="relative h-100 lg:h-125 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/founder.jpeg"
+                  src="/images/founder.webp"
                   alt="Aashral Surana - Founder of SynapCare"
                   fill
                   className="object-cover"
