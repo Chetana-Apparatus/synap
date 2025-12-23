@@ -1,0 +1,207 @@
+"use client"
+
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Phone, Mail, MapPin } from "lucide-react"
+
+export function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  })
+
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const validate = () => {
+    const newErrors: typeof errors = { name: "", email: "", phone: "", message: "" }
+    if (!formData.name.trim()) newErrors.name = "Name is required"
+    if (!formData.email.trim()) newErrors.email = "Email is required"
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Invalid email"
+    if (!formData.phone.trim()) newErrors.phone = "Phone is required"
+    if (!formData.message.trim()) newErrors.message = "Message is required"
+    setErrors(newErrors)
+    // Return true if no errors
+    return Object.values(newErrors).every((err) => err === "")
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!validate()) return // stop if validation fails
+
+    setIsSubmitting(true) // disable button
+    try {
+      const response = await fetch('http://localhost:5000/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        alert('Message sent successfully!')
+        setFormData({ name: "", email: "", phone: "", message: "" })
+        setErrors({ name: "", email: "", phone: "", message: "" })
+      } else {
+        alert('Error: ' + result.error)
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      alert('Failed to send message. Please try again.')
+    } finally {
+      setIsSubmitting(false) // re-enable button
+    }
+  }
+
+  return (
+    <section id="contact" className="py-20 lg:py-32 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4 text-balance">
+            Start Your Journey with SynapCare
+          </h2>
+          <p className="text-xl text-black max-w-2xl mx-auto text-pretty">
+            Your care begins with a conversation. Reach out to us today.
+          </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12">
+          <div className="bg-white rounded-2xl p-8 shadow-xl">
+            <form onSubmit={handleSubmit} className="space-y-6 py-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  Full Name
+                </label>
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="John Doe"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className={`w-full ${errors.name ? "border-red-500" : ""}`}
+                />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  Email Address
+                </label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="john@example.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className={`w-full ${errors.email ? "border-red-500" : ""}`}
+                />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                  Phone Number
+                </label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="+1 (555) 000-0000"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className={`w-full ${errors.phone ? "border-red-500" : ""}`}
+                />
+                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  Message
+                </label>
+                <Textarea
+                  id="message"
+                  placeholder="Tell us about your needs..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  rows={5}
+                  className={`w-full ${errors.message ? "border-red-500" : ""}`}
+                />
+                {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+              </div>
+
+              <Button type="submit" className="btn-primary w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
+            </form>
+          </div>
+
+          {/* Contact info section remains unchanged */}
+          <div className="space-y-8">
+            <div className="bg-white rounded-2xl p-8 shadow-xl">
+              <h3 className="text-2xl font-bold mb-6 text-foreground">Get in Touch</h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+                    <Phone className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Phone</h4>
+                    <p className="text-black">+91 XXX XXX XXXX</p>
+                  </div>
+                </div>
+ 
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center shrink-0">
+                    <Mail className="w-6 h-6 text-secondary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Email</h4>
+                    <p className="text-black">synapcare1510@gmail.com</p>
+                  </div>
+                </div>
+ 
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-accent/50 rounded-full flex items-center justify-center shrink-0">
+                    <MapPin className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Location</h4>
+                    <p className="text-black">Asha Apartment, Sahil Park, Sanewadi, Aundh, Pune, Maharashtra 411067</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+ 
+            <div className="bg-linear-to-br from-primary to-secondary rounded-2xl p-8 text-white shadow-xl">
+              <h3 className="text-2xl font-bold mb-4">Office Hours</h3>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span>Monday - Saturday</span>
+                  <span className="font-semibold">10:00 AM - 7:00 PM</span>
+                </div>
+                {/* <div className="flex justify-between">
+                  <span>Saturday</span>
+                  <span className="font-semibold">10:00 AM - 4:00 PM</span>
+                </div> */}
+                <div className="flex justify-between">
+                  <span>Sunday</span>
+                  <span className="font-semibold">Closed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
