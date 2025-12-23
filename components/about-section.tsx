@@ -15,8 +15,7 @@ export function AboutSection() {
 
           <div className="space-y-6 text-lg leading-relaxed text-black">
   <p className="text-pretty">
-    At SynapCare Rehabilitation Center, we believe that every mind has the power to reconnect, relearn, and rediscover its strengths. Our name comes from the word{" "}
-    <span className="font-semibold text-primary">"synapse"</span>—the tiny connections in the brain that help us speak, move, swallow, think, and communicate. When these connections are supported, strengthened, and nurtured, life begins to change—abilities grow, confidence returns, and hope becomes real again.
+    "In SynapCare Rehabilitation Center, we believe that every mind has the capacity to reconnect, to learn and to discover their capabilities. Our name is derived from "synapse," which refers to the connections within the brain that enable us to speak, to move, to swallow, to think, and to communicate. When they are strengthened and supported, everything changes because capabilities develop and hope is restored."
   </p>
 </div>
 
