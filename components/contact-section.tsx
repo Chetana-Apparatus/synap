@@ -86,7 +86,7 @@ export function ContactSection() {
                 <Input
                   id="name"
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Enter your name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className={`w-full ${errors.name ? "border-red-500" : ""}`}
@@ -101,7 +101,7 @@ export function ContactSection() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder="Enter your email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className={`w-full ${errors.email ? "border-red-500" : ""}`}
@@ -116,7 +116,7 @@ export function ContactSection() {
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="Enter your phone number"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className={`w-full ${errors.phone ? "border-red-500" : ""}`}
@@ -156,7 +156,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Phone</h4>
-                    <p className="text-black">+91 XXX XXX XXXX</p>
+                    <p className="text-black">+91 73877 70918</p>
                   </div>
                 </div>
  
