@@ -14,7 +14,7 @@ const slides = [
     description:
       "Our speech and communication therapy programs help you rebuild meaningful connections with loved ones and regain your confidence in social interactions.",
     cta: "Explore Services",
-    href: "/services",
+    href: "#/services",
     image: "/images/S1.webp",
   },
   {
@@ -24,7 +24,7 @@ const slides = [
     description:
       "Through cognitive and occupational therapy, we help you rediscover and strengthen the skills needed for daily activities and independent living.",
     cta: " Our approach",
-     href: "/approach",
+     href: "#/approach",
     image: "/images/S2.webp",
   },
   {
@@ -34,7 +34,7 @@ const slides = [
     description:
       "Our comprehensive approach combines physiotherapy, emotional counseling, and wellness programs to help you achieve holistic health and resilience.",
     cta: "Book a Consultation",
-     href: "/contact",
+     href: "#/contact",
     image: "/images/S3.webp",
   },
 ]
