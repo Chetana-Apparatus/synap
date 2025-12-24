@@ -66,91 +66,58 @@ export function Footer() {
 
       <div className="container mx-auto px-4">
 
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
 
 
 
           {/* Logo & Tagline */}
 
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 flex flex-col items-start gap-4 leading-none ">
+            <div className="relative h-[100px] w-[280px] overflow-hidden">
+              <Image
+                src="/images/Logo 1.webp"
+                alt="SynapCare"
+                fill
+                className="  brightness-0 invert border-2 object-contain scale-[1.9] -ml-4"
+              />
+            </div>
 
-            <Image
-
-              src="/images/Logo 1.webp"
-
-              alt="SynapCare"
-
-              width={280}
-
-              height={60}
-
-              className="h-40 w-auto mb-4 brightness-0 invert"
-
-            />
-
-        
-
+            <p className="text-white/70 leading-relaxed max-w-md text-balance">
+              Reconnecting minds, rebuilding lives,one synapse at a time.
+            </p>
 
 
             {/* Social Icons */}
-
             <div className="flex items-center gap-4">
-
               <Link
-
                 href="https://www.facebook.com/profile.php?id=61585082220584/"
-
                 target="_blank"
-
                 aria-label="Facebook"
-
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary transition"
-
               >
-
                 <Facebook className="w-5 h-5" />
-
               </Link>
 
-
-
               <Link
-
                 href="https://www.instagram.com/synapcare_rehab/"
-
                 target="_blank"
-
                 aria-label="Instagram"
-
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary transition"
-
               >
-
                 <Instagram className="w-5 h-5" />
-
               </Link>
-
-
 
               <Link
-
                 href="https://www.linkedin.com/company/synapcare-rehabilitation-center"
-
                 target="_blank"
-
                 aria-label="LinkedIn"
-
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary transition"
-
               >
-
                 <Linkedin className="w-5 h-5" />
-
               </Link>
-
             </div>
-
           </div>
+
 
 
 
