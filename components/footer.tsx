@@ -83,7 +83,7 @@ export function Footer() {
             </div>
 
             <p className="text-white/70 leading-relaxed max-w-md text-balance">
-              Reconnecting minds, rebuilding lives,one synapse at a time.
+              Reconnecting minds,rebuilding lives,one synapse at a time.
             </p>
 
 
