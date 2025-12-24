@@ -166,9 +166,10 @@ export function ServicesSection() {
                     {/* Title */}
                     <div className="absolute bottom-4 left-4 right-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg">
-                          <Icon className="w-6 h-6 text-white" strokeWidth={2.25} />
-                        </div>
+                       <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg flex-shrink-0">
+  <Icon className="w-6 h-6 text-white" strokeWidth={2.25} />
+</div>
+
                         <h3 className="text-lg font-bold text-white">
                           {service.title}
                         </h3>
@@ -198,10 +199,42 @@ export function ServicesSection() {
 
         {/* CTA */}
         <div className="flex justify-center mt-12">
-          <Button className="rounded-full bg-linear-to-r from-primary to-secondary text-white">
-            <Link href="#contact">Book a Consultation</Link>
-          </Button>
-        </div>
+  <Button
+    size="lg"
+    className="
+      group relative overflow-hidden rounded-full
+      bg-linear-to-r from-primary to-secondary
+      text-white font-semibold
+      px-8 py-4
+      cursor-pointer
+      shadow-md
+      transition-all duration-300 ease-out
+      hover:-translate-y-0.5
+      hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
+    "
+  >
+    {/* Button text */}
+    <span className="relative z-10">
+      <Link href="#contact">Book a Consultation</Link>
+    </span>
+
+    {/* Light streak hover effect */}
+    <span
+      className="
+        pointer-events-none
+        absolute -top-[150%] left-0
+        w-[300%] h-[6px]
+        bg-white/40
+        rounded-full
+        blur-sm
+        opacity-0
+        transition-all duration-500
+        group-hover:top-[150%]
+        group-hover:opacity-100
+      "
+    />
+  </Button>
+</div>
 
       </div>
     </section>

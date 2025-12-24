@@ -58,14 +58,80 @@ export function Header() {
           </nav>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
-            <Button asChild className="rounded-full bg-linear-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
-              <Link href="#contact">Book a Consultation</Link>
-            </Button>
-            <Button variant="outline" className="btn-outline bg-transparent !rounded-full">
-              Call Now
-            </Button>
-          </div>
+         {/* CTA Buttons */}
+<div className="hidden lg:flex items-center gap-4">
+  {/* Primary CTA */}
+  <Button
+    asChild
+    className="
+      group relative overflow-hidden rounded-full
+      bg-gradient-to-r from-primary to-secondary
+      text-white font-medium
+      px-6 py-3
+      cursor-pointer
+      shadow-md
+      transition-all duration-300
+      hover:-translate-y-0.5
+      hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
+    "
+  >
+    <Link href="#contact" className="relative z-10">
+      Book a Consultation
+
+      {/* Light streak */}
+      <span
+        className="
+          pointer-events-none
+          absolute -top-[150%] left-0
+          w-[300%] h-[6px]
+          bg-white/40
+          rounded-full
+          blur-sm
+          opacity-0
+          transition-all duration-500
+          group-hover:top-[150%]
+          group-hover:opacity-100
+        "
+      />
+    </Link>
+  </Button>
+
+  {/* Secondary CTA */}
+  <Button
+    variant="outline"
+    className="
+      group relative overflow-hidden rounded-full
+      border border-primary
+      text-primary
+      px-6 py-3
+      bg-transparent
+      cursor-pointer
+      shadow-sm
+      transition-all duration-300
+      hover:-translate-y-0.5
+      hover:shadow-[0_0_25px_rgba(99,102,241,0.45)]
+    "
+  >
+    <span className="relative z-10">Call Now</span>
+
+    {/* Light streak */}
+    <span
+      className="
+        pointer-events-none
+        absolute -top-[150%] left-0
+        w-[300%] h-[6px]
+        bg-primary/40
+        rounded-full
+        blur-sm
+        opacity-0
+        transition-all duration-500
+        group-hover:top-[150%]
+        group-hover:opacity-100
+      "
+    />
+  </Button>
+</div>
+
 
           {/* Mobile Menu Button */}
           <button
@@ -91,14 +157,78 @@ export function Header() {
                   {link.label}
                 </Link>
               ))}
-              <div className="flex flex-col gap-3 pt-4 px-4">
-                <Button asChild className="w-full rounded-full bg-linear-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
-                  <Link href="#contact">Book a Consultation</Link>
-                </Button>
-                <Button className="btn-outline w-full bg-transparent !rounded-full">
-                  Call Now
-                </Button>
-              </div>
+              <div className="flex flex-col gap-3 pt-4 px-4 overflow-visible">
+  {/* Primary CTA */}
+  <Button
+    asChild
+    className="
+      group relative w-full overflow-hidden rounded-full
+      bg-gradient-to-r from-primary to-secondary
+      text-white font-medium
+      px-6 py-3
+      cursor-pointer
+      shadow-md
+      transition-all duration-300 ease-out
+      hover:-translate-y-0.5
+      hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
+    "
+  >
+    <Link href="#contact" className="relative z-10 text-center">
+      Book a Consultation
+
+      {/* Light streak */}
+      <span
+        className="
+          pointer-events-none
+          absolute -top-[150%] left-0
+          w-[300%] h-[6px]
+          bg-white/40
+          rounded-full
+          blur-sm
+          opacity-0
+          transition-all duration-500
+          group-hover:top-[150%]
+          group-hover:opacity-100
+        "
+      />
+    </Link>
+  </Button>
+
+  {/* Secondary CTA */}
+  <Button
+    className="
+      group relative w-full overflow-hidden rounded-full
+      border border-primary
+      bg-transparent
+      text-primary
+      px-6 py-3
+      cursor-pointer
+      shadow-sm
+      transition-all duration-300 ease-out
+      hover:-translate-y-0.5
+      hover:shadow-[0_0_25px_rgba(99,102,241,0.45)]
+    "
+  >
+    <span className="relative z-10 text-center">Call Now</span>
+
+    {/* Light streak */}
+    <span
+      className="
+        pointer-events-none
+        absolute -top-[150%] left-0
+        w-[300%] h-[6px]
+        bg-primary/40
+        rounded-full
+        blur-sm
+        opacity-0
+        transition-all duration-500
+        group-hover:top-[150%]
+        group-hover:opacity-100
+      "
+    />
+  </Button>
+</div>
+
             </nav>
           </div>
         )}

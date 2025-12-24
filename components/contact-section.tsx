@@ -139,7 +139,7 @@ export function ContactSection() {
                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
 
-              <Button type="submit" className="btn-primary w-full" disabled={isSubmitting}>
+              <Button type="submit" className="btn-primary  rounded-full w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>

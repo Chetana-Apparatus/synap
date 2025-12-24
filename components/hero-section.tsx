@@ -105,11 +105,41 @@ return (
 
             <Link href={slide.href}>
   <Button
-    size="lg"
-    className="rounded-full bg-linear-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
-  >
+  size="lg"
+  className="
+    group relative overflow-hidden rounded-full
+    bg-gradient-to-r from-primary to-secondary
+    text-white font-semibold
+    px-8 py-4
+    cursor-pointer
+    shadow-md
+    transition-all duration-300 ease-out
+    hover:-translate-y-0.5
+    hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
+  "
+>
+  {/* Button text */}
+  <span className="relative z-10">
     {slide.cta}
-  </Button>
+  </span>
+
+  {/* Light streak (same as CTA) */}
+  <span
+    className="
+      pointer-events-none
+      absolute -top-[150%] left-0
+      w-[300%] h-[6px]
+      bg-white/40
+      rounded-full
+      blur-sm
+      opacity-0
+      transition-all duration-500
+      group-hover:top-[150%]
+      group-hover:opacity-100
+    "
+  />
+</Button>
+
 </Link>
 
           </div>

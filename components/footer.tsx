@@ -15,7 +15,7 @@ export function Footer() {
               alt="SynapCare"
               width={280}
               height={60}
-              className="h-25 w-auto mb-4 brightness-0 invert"
+              className="h-40 w-auto mb-4 brightness-0 invert"
             />
             <p className="text-white/70 leading-relaxed mb-6">
               Reconnecting minds, rebuilding lives, one synapse at a time.
