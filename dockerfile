@@ -19,7 +19,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Set environment variables for build
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Build the application
 RUN \
@@ -33,8 +33,8 @@ RUN \
 FROM node:20-alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Required environment variables (pass at runtime):
 # - EMAIL_USER: Gmail address for sending emails
@@ -57,8 +57,8 @@ USER nextjs
 
 EXPOSE 7001
 
-ENV PORT 7001
-ENV HOSTNAME "0.0.0.0"
+ENV PORT=7001
+ENV HOSTNAME="0.0.0.0"
 
 CMD ["node", "server.js"]
 
