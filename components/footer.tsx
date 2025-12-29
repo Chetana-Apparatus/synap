@@ -73,16 +73,19 @@ export function Footer() {
           {/* Logo & Tagline */}
 
           <div className="md:col-span-2 flex flex-col items-start gap-4 leading-none ">
-            <div className="relative h-[100px] w-[280px] overflow-hidden">
-              <Image
-                src="/images/Logo 1.webp"
-                alt="SynapCare"
-                fill
-                className="  brightness-0 invert border-2 object-contain scale-[1.9] -ml-4"
-              />
-            </div>
+            <div className="relative w-[250px] h-[100px]">
+  <Image
+    src="/images/logo3.webp"
+    alt="SynapCare"
+    fill
+    className="object-contain brightness-0 invert "
+    priority
+  />
+</div>
 
-            <p className="text-white/70 leading-relaxed max-w-md text-balance">
+
+
+            <p className="text-white/70  mb-1 leading-relaxed max-w-md text-balance">
               Reconnecting minds,rebuilding lives,one synapse at a time.
             </p>
 
@@ -90,7 +93,7 @@ export function Footer() {
             {/* Social Icons */}
             <div className="flex items-center gap-4">
               <Link
-                href="https://www.facebook.com/profile.php?id=61585082220584/"
+                href="https://www.facebook.com/SynapCareRehab/"
                 target="_blank"
                 aria-label="Facebook"
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary transition"

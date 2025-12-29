@@ -71,7 +71,8 @@ export default function HeroSection() {
     setTimeout(() => setIsAutoPlaying(true), 10000)
   }
 return (
-  <div className="relative h-screen w-full overflow-hidden">
+  <div className="relative w-full min-h-[85vh] lg:min-h-[100vh] overflow-hidden">
+
     {slides.map((slide, index) => (
       <div
         key={slide.id}
@@ -81,9 +82,11 @@ return (
       >
         {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat object-cover"
+          className="absolute inset-0 bg-cover bg-top bg-no-repeat"
           style={{ backgroundImage: `url(${slide.image})` }}
         >
+           <div className="absolute inset-0 bg-black/50" />
+          
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/50" />
         </div>

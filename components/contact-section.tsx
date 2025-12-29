@@ -152,15 +152,41 @@ export function ContactSection() {
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
-                    <Phone className="w-6 h-6 text-primary" />
+                    <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Phone</h4>
-                    <p className="text-black">+91 73877 70918</p>
+                    <h4 className="font-semibold mb-1">Email</h4>
+                    <p className="text-black">synapcare1510@gmail.com</p>
                   </div>
                 </div>
- 
                 <div className="flex items-start gap-4">
+  <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center shrink-0">
+    <Phone className="w-6 h-6 text-secondary" />
+  </div>
+
+  <div>
+    <h4 className="font-semibold mb-1">Phone</h4>
+
+    <div className="flex flex-col gap-1 text-black">
+      <a
+        href="tel:+917387770918"
+        className="hover:text-primary transition"
+      >
+        +91 73877 70918
+      </a>
+
+      <a
+        href="tel:+917709370918"
+        className="hover:text-primary transition"
+      >
+        +91 77093 70918
+      </a>
+    </div>
+  </div>
+</div>
+
+ 
+                {/* <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center shrink-0">
                     <Mail className="w-6 h-6 text-secondary" />
                   </div>
@@ -168,7 +194,7 @@ export function ContactSection() {
                     <h4 className="font-semibold mb-1">Email</h4>
                     <p className="text-black">synapcare1510@gmail.com</p>
                   </div>
-                </div>
+                </div> */}
  
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-accent/50 rounded-full flex items-center justify-center shrink-0">
@@ -187,7 +213,7 @@ export function ContactSection() {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span>Monday - Saturday</span>
-                  <span className="font-semibold">10:00 AM - 7:00 PM</span>
+                  <span className="font-semibold">10:00 AM - 8:00 PM</span>
                 </div>
                 {/* <div className="flex justify-between">
                   <span>Saturday</span>

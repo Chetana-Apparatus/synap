@@ -1,4 +1,4 @@
-import { Heart, Brain, Sparkles } from "lucide-react"
+import { Heart,ClipboardList, Layers, Users } from "lucide-react"
 
 export function AboutSection() {
   return (
@@ -25,31 +25,31 @@ export function AboutSection() {
              {/* Card 1 */}
   <div className="space-y-4 text-center border border-border rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
     <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
-      <Brain className="w-6 h-6 text-secondary" />
+      <ClipboardList className="w-6 h-6 text-secondary" />
     </div>
-    <h3 className="font-semibold text-xl">Evidence-Based</h3>
+    <h3 className="font-semibold text-xl">Personalized Care Plans</h3>
     <p className="text-sm text-black">
-      Scientifically proven methods for optimal results
+      Tailored therapy programs designed around individual needs and goals.
     </p>
   </div>
              {/* Card 2 */}
   <div className="space-y-4 text-center border border-border rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-      <Heart className="w-6 h-6 text-primary" />
+      <Layers className="w-6 h-6 text-primary" />
     </div>
-    <h3 className="font-semibold text-xl">Compassionate Care</h3>
+    <h3 className="font-semibold text-xl">Family-Centered Support</h3>
     <p className="text-sm text-black">
-      Empathy and understanding at every step
+     Active involvement of families and caregivers throughout the care journey.
     </p>
   </div>
             {/* Card 3 */}
   <div className="space-y-4 text-center border border-border rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
     <div className="w-12 h-12 bg-accent/30 rounded-full flex items-center justify-center mx-auto">
-      <Sparkles className="w-6 h-6 text-primary" />
+      <Users className="w-6 h-6 text-primary" />
     </div>
-    <h3 className="font-semibold text-xl">Goal-Oriented</h3>
+    <h3 className="font-semibold text-xl">Integrated Therapy Approach</h3>
     <p className="text-sm text-black">
-      Personalized plans for your unique journey
+    Collaborative care addressing physical, cognitive, and communication needs.
     </p>
   </div>
           </div>

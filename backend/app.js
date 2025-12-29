@@ -1,4 +1,8 @@
 require("dotenv").config();
+console.log("ENV CHECK:", {
+  EMAIL_USER: process.env.EMAIL_USER,
+  EMAIL_PASS: process.env.EMAIL_PASS ? "SET" : "MISSING",
+});
 
 const express = require("express")
 const cors = require("cors")
@@ -51,7 +55,8 @@ app.post("/contact", async (req, res) => {
 
           <!-- Header -->
           <tr>
-            <td style="background:linear-gradient(135deg,#6d28d9,#0ea5e9); padding:24px; text-align:center;">
+            <td style="background: linear-gradient(135deg, #6d28d9, #0ea5e9);
+padding:24px; text-align:center;">
               <h1 style="margin:0; font-size:22px; color:#ffffff;">
                 📩 New Contact Form Submission
               </h1>
