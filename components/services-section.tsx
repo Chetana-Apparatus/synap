@@ -7,10 +7,11 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Autoplay, Navigation } from "swiper/modules"
+import { Autoplay, Navigation , Pagination } from "swiper/modules"
 
 import "swiper/css"
 import "swiper/css/navigation"
+import "swiper/css/pagination"
 
 import {
   MessageSquare,
@@ -110,14 +111,18 @@ export function ServicesSection() {
         </div>
 
         {/* Swiper */}
-        <Swiper
-  modules={[Autoplay, Navigation]}
+       <Swiper
+  modules={[Autoplay, Navigation, Pagination]}
   autoplay={{
     delay: 2500,
     disableOnInteraction: false,
     pauseOnMouseEnter: true,
   }}
   navigation
+  pagination={{
+    clickable: true,
+    el: ".services-pagination",
+  }}
   loop
   spaceBetween={24}
   className="!items-stretch"
@@ -196,6 +201,8 @@ export function ServicesSection() {
             )
           })}
         </Swiper>
+{/* Pagination dots */}
+<div className="services-pagination flex justify-center mt-6 mb-6" />
 
         {/* CTA */}
         <div className="flex justify-center mt-12">
