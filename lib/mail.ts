@@ -1,12 +1,9 @@
-const nodemailer = require("nodemailer");
-const dotenv = require("dotenv");
-
-dotenv.config();
+import nodemailer from "nodemailer";
 
 const { EMAIL_USER, EMAIL_PASS } = process.env;
-if (!EMAIL_USER || !EMAIL_PASS) {
 
-  console.error(" EMAIL ENV VARIABLES NOT SET");
+if (!EMAIL_USER || !EMAIL_PASS) {
+  console.error("⚠️ EMAIL ENV VARIABLES NOT SET");
 }
 
 const transporter = nodemailer.createTransport({
@@ -19,12 +16,12 @@ const transporter = nodemailer.createTransport({
 
 transporter.verify((error, success) => {
   if (error) {
-    console.error(" Nodemailer Error:", error);
+    console.error("❌ Nodemailer Error:", error);
   } else {
-    console.log(" Nodemailer is ready to send emails");
+    console.log("✅ Nodemailer is ready to send emails");
   }
   console.log("📧 MAIL TRANSPORT CONFIG:", transporter.options);
-
 });
 
-module.exports = { transporter };
+export { transporter };
+

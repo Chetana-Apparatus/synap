@@ -1,41 +1,17 @@
-require("dotenv").config();
-console.log("ENV CHECK:", {
-  EMAIL_USER: process.env.EMAIL_USER,
-  EMAIL_PASS: process.env.EMAIL_PASS ? "SET" : "MISSING",
-});
+import { NextRequest, NextResponse } from "next/server";
+import { transporter } from "@/lib/mail";
 
-const express = require("express")
-const cors = require("cors")
-const { transporter } = require ("./config/mail.js"); 
-
-const app = express()
-
-
-/* ---------- MIDDLEWARES ---------- */
-
-// Allow frontend requests
-app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:3001", "http://192.168.1.192:3000"], // Next.js frontend
-  methods: ["GET", "POST"],
-}))
-
-// Parse JSON body
-app.use(express.json())
-
-// Parse form data
-app.use(express.urlencoded({ extended: true }))
-
-/* ---------- ROUTES ---------- */
-
-app.get("/", (req, res) => {
-  res.send("✅ SynapCare Backend Running")
-})
-
-
-app.post("/contact", async (req, res) => {
-  try {
-
-    const contactEmailTemplate = ({ name, email, phone, message }) => `
+const contactEmailTemplate = ({
+  name,
+  email,
+  phone,
+  message,
+}: {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}) => `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,14 +120,21 @@ padding:24px; text-align:center;">
 
 </body>
 </html>
-`
-    const { name, email, phone, message } = req.body;
+`;
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { name, email, phone, message } = body;
 
     if (!name || !email || !phone || !message) {
-      return res.status(400).json({
-        success: false,
-        error: "All fields are required",
-      });
+      return NextResponse.json(
+        {
+          success: false,
+          error: "All fields are required",
+        },
+        { status: 400 }
+      );
     }
 
     // Send email to website owner
@@ -162,27 +145,20 @@ padding:24px; text-align:center;">
       subject: "New Contact Form Submission",
       html: contactEmailTemplate({ name, email, phone, message }),
     });
-   
 
-    return res.status(200).json({
+    return NextResponse.json({
       success: true,
       message: "Message sent successfully",
     });
-
   } catch (error) {
     console.error("Error:", error);
-    return res.status(500).json({
-      success: false,
-      error: error.message,
-    });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 }
+    );
   }
-});
+}
 
-
-/* ---------- SERVER ---------- */
-
-const PORT = 5000
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`)
-  console.log(`🚀 Also accessible at http://192.168.1.192:${PORT}`)
-})
