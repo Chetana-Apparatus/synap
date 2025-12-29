@@ -37,7 +37,7 @@ export function AboutSection() {
     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
       <Layers className="w-6 h-6 text-primary" />
     </div>
-    <h3 className="font-semibold text-xl">Family-Centered Support</h3>
+    <h3 className="font-semibold text-xl">Family Centered Support</h3>
     <p className="text-sm text-black">
      Active involvement of families and caregivers throughout the care journey.
     </p>
