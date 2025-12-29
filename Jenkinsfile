@@ -36,7 +36,8 @@ pipeline {
                 script {
                     withCredentials([
                         string(credentialsId: 'email-user', variable: 'EMAIL_USER'),
-                        string(credentialsId: 'email-pass', variable: 'EMAIL_PASS')
+                        string(credentialsId: 'email-pass', variable: 'EMAIL_PASS'),
+                        string(credentialsId: 'web-owner', variable: 'WEB_OWNER')
                     ]) {
                         sh '''
                           docker run -d \
@@ -44,6 +45,7 @@ pipeline {
                             -p ${APP_PORT}:${APP_PORT} \
                             -e EMAIL_USER=${EMAIL_USER} \
                             -e EMAIL_PASS=${EMAIL_PASS} \
+                            -e WEB_OWNER=${WEB_OWNER} \
                             --restart always \
                             ${IMAGE_NAME}:latest
                         '''
