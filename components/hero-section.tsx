@@ -152,20 +152,51 @@ return (
 
     {/* Navigation Arrows */}
     <button
-      onClick={goToPrevious}
-      className="absolute left-4 md:left-8 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white backdrop-blur hover:bg-white/30"
-      aria-label="Previous slide"
-    >
-      <ChevronLeft className="h-6 w-6" />
-    </button>
+  onClick={goToPrevious}
+  aria-label="Previous slide"
+  className="
+    hidden md:flex
+    absolute left-8
+    top-1/2 -translate-y-1/2
+    z-50
+    items-center justify-center
+    rounded-full
+    bg-black/40
+    backdrop-blur
+    text-white
+    p-3
+    shadow-lg
+    transition
+    hover:bg-black/60
+  "
+>
+  <ChevronLeft className="h-6 w-6" />
+</button>
 
-    <button
-      onClick={goToNext}
-      className="absolute right-4 md:right-8 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white backdrop-blur hover:bg-white/30"
-      aria-label="Next slide"
-    >
-      <ChevronRight className="h-6 w-6" />
-    </button>
+
+
+<button
+  onClick={goToNext}
+  aria-label="Next slide"
+  className="
+    hidden md:flex
+    absolute right-8
+    top-1/2 -translate-y-1/2
+    z-50
+    items-center justify-center
+    rounded-full
+    bg-black/40
+    backdrop-blur
+    text-white
+    p-3
+    shadow-lg
+    transition
+    hover:bg-black/60
+  "
+>
+  <ChevronRight className="h-6 w-6" />
+</button>
+
 
     {/* Dots */}
     <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-3">

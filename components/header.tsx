@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -9,14 +9,7 @@ import { Menu, X } from "lucide-react"
 export function Header() {
   // const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setIsScrolled(window.scrollY > 20)
-  //   }
-  //   window.addEventListener("scroll", handleScroll)
-  //   return () => window.removeEventListener("scroll", handleScroll)
-  // }, [])
+  const [activeLink, setActiveLink] = useState("#home")
 
   const navLinks = [
     { href: "#home", label: "Home" },
@@ -26,6 +19,92 @@ export function Header() {
     { href: "#founder", label: "Founder" },
     { href: "#contact", label: "Contact" },
   ]
+
+  useEffect(() => {
+    // Function to determine which section is currently in view
+    const updateActiveLink = () => {
+      const scrollPosition = window.scrollY + 150 // Offset for header height + some padding
+      const windowHeight = window.innerHeight
+      const documentHeight = document.documentElement.scrollHeight
+
+      // If at the very top, set home as active
+      if (scrollPosition < 200) {
+        setActiveLink("#home")
+        return
+      }
+
+      // Check each section from bottom to top to find the active one
+      const sections = ["contact", "founder", "approach", "services", "about", "home"]
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          const elementTop = element.offsetTop
+          const elementBottom = elementTop + element.offsetHeight
+          
+          // If scroll position is within this section's bounds
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            setActiveLink(`#${sectionId}`)
+            return
+          }
+        }
+      }
+
+      // If scrolled to bottom, set contact as active
+      if (window.scrollY + windowHeight >= documentHeight - 100) {
+        setActiveLink("#contact")
+      }
+    }
+
+    // Set initial active link based on hash or scroll position
+    const hash = window.location.hash
+    if (hash && navLinks.some(link => link.href === hash)) {
+      setActiveLink(hash)
+    } else {
+      updateActiveLink()
+    }
+
+    // Listen for hash changes (when clicking nav links OR footer links)
+    const handleHashChange = () => {
+      const hash = window.location.hash || "#home"
+      if (navLinks.some(link => link.href === hash)) {
+        setActiveLink(hash)
+        // Also update after scroll animation completes
+        setTimeout(() => {
+          updateActiveLink()
+        }, 1000)
+      }
+    }
+
+    // Listen for scroll events to update active link based on visible section
+    const handleScroll = () => {
+      updateActiveLink()
+    }
+
+    // Listen for popstate (browser back/forward)
+    const handlePopState = () => {
+      const hash = window.location.hash || "#home"
+      if (navLinks.some(link => link.href === hash)) {
+        setActiveLink(hash)
+      }
+      setTimeout(() => {
+        updateActiveLink()
+      }, 100)
+    }
+
+    window.addEventListener("hashchange", handleHashChange)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("popstate", handlePopState)
+    
+    // Update on mount
+    updateActiveLink()
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange)
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("popstate", handlePopState)
+    }
+  }, [])
 
   return (
     <header
@@ -50,14 +129,25 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className={`relative font-medium transition-colors
+                  ${
+                    activeLink === link.href
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary"
+                  }
+                `}
               >
                 {link.label}
+
+                {/* Active underline */}
+                {activeLink === link.href && (
+                  <span className="absolute -bottom-2 left-0 h-[2px] w-full bg-primary rounded-full" />
+                )}
               </Link>
             ))}
           </nav>
 
-          {/* CTA Buttons */}
+          
          {/* CTA Buttons */}
 <div className="hidden lg:flex items-center gap-4">
   {/* Primary CTA */}
@@ -151,7 +241,11 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-foreground hover:text-primary hover:bg-muted/50 transition-all font-medium py-3 px-4 rounded-lg"
+                  className={`transition-all font-medium py-3 px-4 rounded-lg ${
+                    activeLink === link.href
+                      ? "text-primary bg-muted/50"
+                      : "text-foreground hover:text-primary hover:bg-muted/50"
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}

@@ -11,7 +11,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "SynapCare Rehabilitation Center | Speech, Language & Swallowing Therapy",
+  title: "SynapCare Rehabilitation Center ",
   description:
     "Holistic, compassionate, and evidence-based rehabilitation for children and adults. Specializing in speech therapy, language therapy, dysphagia treatment, and cognitive rehabilitation.",
   keywords:

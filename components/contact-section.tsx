@@ -139,9 +139,38 @@ export function ContactSection() {
                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
 
-              <Button type="submit" className="btn-primary  rounded-full w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
+              <Button
+  type="submit"
+  disabled={isSubmitting}
+  className="
+    btn-primary
+    group relative overflow-hidden rounded-full w-full
+    font-semibold
+    transition-all duration-300 ease-out
+    hover:-translate-y-0.5
+    // hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
+    disabled:opacity-60 disabled:cursor-not-allowed
+  "
+>
+  {isSubmitting ? "Sending..." : "Send Message"}
+
+  {/* Light streak hover effect */}
+  <span
+    className="
+      pointer-events-none
+      absolute -top-[150%] left-0
+      w-[300%] h-[6px]
+      bg-white/40
+      rounded-full
+      blur-sm
+      opacity-0
+      transition-all duration-500
+      group-hover:top-[150%]
+      group-hover:opacity-100
+    "
+  />
+</Button>
+
             </form>
           </div>
 
@@ -202,7 +231,14 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Location</h4>
-                    <p className="text-black">Asha Apartment, Sahil Park, Sanewadi, Aundh, Pune, Maharashtra 411067</p>
+                    <a
+      href="https://www.google.com/maps?q=Asha+Apartment,+Sahil+Park,+Sanewadi,+Aundh,+Pune,+Maharashtra+411067"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-black hover:text-primary transition underline-offset-4 hover:text-primary cursor-pointer"
+    >
+      Asha Apartment, Sahil Park, Sanewadi, Aundh, Pune, Maharashtra 411067
+    </a>
                   </div>
                 </div>
               </div>
