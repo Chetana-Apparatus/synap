@@ -86,7 +86,7 @@ export function Footer() {
 
 
             <p className="text-white/70  mb-1 leading-relaxed max-w-md text-balance">
-              Reconnecting minds,rebuilding lives,one synapse at a time.
+              Reconnecting minds, rebuilding lives, one synapse at a time.
             </p>
 
 
