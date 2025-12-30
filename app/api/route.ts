@@ -4,3 +4,4 @@ export async function GET() {
   return NextResponse.json({ message: "✅ SynapCare Backend Running" });
 }
 
+

@@ -36,11 +36,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Required environment variables (pass at runtime):
-# - EMAIL_USER: Gmail address for sending emails
-# - EMAIL_PASS: Gmail App Password (not regular password)
-# - WEB_OWNER: Email address where contact form submissions are sent
-# Example: docker run -e EMAIL_USER=your@email.com -e EMAIL_PASS=your-app-password -e WEB_OWNER=recipient@email.com -p 7001:7001 synap-app
+# Email configuration is hardcoded in the application code
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs

@@ -1,10 +1,7 @@
 import nodemailer from "nodemailer";
 
-const { EMAIL_USER, EMAIL_PASS } = process.env;
-
-if (!EMAIL_USER || !EMAIL_PASS) {
-  console.error("⚠️ EMAIL ENV VARIABLES NOT SET");
-}
+const EMAIL_USER = "apparatusasmail@gmail.com";
+const EMAIL_PASS = "pmmf fbvk kypp flqg";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -24,4 +21,5 @@ transporter.verify((error, success) => {
 });
 
 export { transporter };
+
 
