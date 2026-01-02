@@ -3,7 +3,7 @@ import { GraduationCap, Award } from "lucide-react"
 
 export function FounderSection() {
   return (
-    <section id="founder" className="py-20 lg:py-32 bg-[rgb(245, 245, 245)]">
+    <section id="founder" className="pt-12 pb-20 lg:pt-20 lg:pb-32 bg-[rgb(245, 245, 245)]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">Meet the Founder</h2>
@@ -15,7 +15,7 @@ export function FounderSection() {
             <div className="lg:col-span-2">
               <div className="relative h-100 lg:h-125 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/founder.webp"
+                  src="/images/Founder1.webp"
                   alt="Aashral Surana - Founder of SynapCare"
                   fill
                   className="object-cover"

@@ -204,11 +204,13 @@ return (
         <button
           key={index}
           onClick={() => goToSlide(index)}
-          className={`h-3 rounded-full transition-all ${
-            index === currentSlide
-              ? "w-10 bg-primary"
-              : "w-3 bg-white/50 hover:bg-white"
-          }`}
+          className={`h-3 w-3 rounded-full transition-all duration-300 ${
+  index === currentSlide
+    ? "bg-gradient-to-r from-primary to-secondary shadow-[0_0_10px_rgba(99,102,241,0.6)]"
+    : "bg-white/50 hover:bg-white"
+}`}
+
+
           aria-label={`Go to slide ${index + 1}`}
         />
       ))}

@@ -2,9 +2,9 @@ import { Target, Users, TrendingUp } from "lucide-react"
 
 export function ApproachSection() {
   return (
-    <section id="approach" className="py-20 lg:py-32 bg-white">
+    <section id="approach" className="pt-12 pb-20 lg:pt-20 lg:pb-32 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-left lg:text-center mb-10">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4 text-balance">Our Approach</h2>
           <p className="text-xl text-black max-w-2xl mx-auto text-pretty">
             Holistic, multidisciplinary treatment centered around your unique needs
@@ -46,7 +46,10 @@ export function ApproachSection() {
 
         {/* Info Banner */}
         <div className="mt-16 max-w-4xl mx-auto bg-linear-to-r from-primary to-secondary rounded-2xl p-8 lg:p-12 text-center shadow-xl">
-          <p className="text-xl lg:text-2xl text-white leading-relaxed text-pretty">
+         <h3 className="text-2xl lg:text-3xl font-bold  text-left lg:text-center text-white mb-4">
+  A Holistic Approach to Lifelong Well-Being
+</h3>
+          <p className="text-xl lg:text-2xl text-white leading-relaxed text-left lg:text-center text-pretty">
            At SynapCare Rehabilitation Center, we are committed to enhancing quality of life for individuals of all ages through personalized, evidence-based rehabilitation. Our multidisciplinary team provides comprehensive care across communication, cognition, swallowing, occupational therapy, physiotherapy, and diet & nutrition services, ensuring holistic, coordinated care under one roof. 
 
   

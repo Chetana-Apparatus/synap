@@ -65,9 +65,9 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20 lg:py-32 bg-white">
+    <section id="contact" className="pt-12 pb-20 lg:pt-20 lg:pb-32 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-left lg:text-center mb-10">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4 text-balance">
             Start Your Journey with SynapCare
           </h2>

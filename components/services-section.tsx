@@ -100,10 +100,10 @@ export function ServicesSection() {
   const swiperRef = React.useRef<any>(null)
 
   return (
-    <section id="services" className="py-20 lg:py-32 bg-[rgb(245,245,245)]">
+    <section id="services" className="pt-12 pb-20 lg:pt-20 lg:pb-32 bg-[rgb(245,245,245)]">
       <div className="container mx-auto px-4">
         {/* Heading */}
-        <div className="text-center mb-16">
+        <div className="text-left lg:text-center mb-10">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">
             What We Offer
           </h2>
@@ -120,7 +120,7 @@ export function ServicesSection() {
             aria-label="Previous slide"
             className="
               hidden md:flex
-              absolute left-0
+              absolute -left-10
               top-1/2 -translate-y-1/2
               z-50
               items-center justify-center
@@ -144,7 +144,7 @@ export function ServicesSection() {
             aria-label="Next slide"
             className="
               hidden md:flex
-              absolute right-0
+              absolute -right-10
               top-1/2 -translate-y-1/2
               z-50
               items-center justify-center

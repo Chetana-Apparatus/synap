@@ -108,8 +108,12 @@ export function Header() {
 
   return (
     <header
-       className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md"
-    >
+  className="
+    fixed top-0 left-0 right-0 z-50
+    bg-white/70 backdrop-blur-xl border-b border-white/30 shadow-md
+    lg:bg-white lg:backdrop-blur-0 lg:border-none
+  "
+>
       <div className="  mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -119,7 +123,7 @@ export function Header() {
               alt="SynapCare Rehabilitation Center"
               width={280}
               height={60}
-              className="h-40 w-auto"
+              className="h-40 w-auto "
             />
           </Link>
 
@@ -225,11 +229,12 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2"
+            className="lg:hidden p-2 h-24 w-20
+    flex items-center justify-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMobileMenuOpen ? <X className="h-10 w-10" /> : <Menu className="h-12 w-12" />}
           </button>
         </div>
 
