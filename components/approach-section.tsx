@@ -13,7 +13,7 @@ export function ApproachSection() {
     >
 
       <div className="container mx-auto px-4">
-        <div className="text-left lg:text-center mb-10">
+        <div className="text-center mb-10">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4 text-balance">Our Approach</h2>
           <p className="text-xl text-black max-w-2xl mx-auto text-pretty">
             Holistic, multidisciplinary treatment centered around your unique needs

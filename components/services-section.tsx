@@ -103,7 +103,7 @@ export function ServicesSection() {
     <section id="services" className="pt-12 pb-20 lg:pt-20 lg:pb-32 bg-[rgb(245,245,245)]">
       <div className="container mx-auto px-4">
         {/* Heading */}
-        <div className="text-left lg:text-center mb-10">
+        <div className="text-center mb-10">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">
             What We Offer
           </h2>

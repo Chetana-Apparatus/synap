@@ -68,15 +68,15 @@ export function ContactSection() {
    <section
   id="contact"
   className="
-    pt-28 pb-20
-    lg:pt-32 lg:pb-32
+    pt-12 pb-20
+    lg:pt-20 lg:pb-32
     bg-white
-    scroll-mt-28 lg:scroll-mt-32
+    scroll-mt-20 lg:scroll-mt-20
   "
 >
 
       <div className="container mx-auto px-4">
-        <div className="text-left lg:text-center mb-10">
+        <div className="text-center mb-10">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4 text-balance">
             Start Your Journey with SynapCare
           </h2>

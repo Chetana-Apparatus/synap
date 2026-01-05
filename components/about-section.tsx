@@ -5,13 +5,13 @@ export function AboutSection() {
     <section id="about" className="py-20 lg:py-32 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-left lg:text-center space-y-6">
-          <div className="flex justify-start lg:justify-center mb-6">
+          <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
               <Heart className="w-8 h-8 text-primary" />
             </div>
           </div>
 
-          <h2 className="text-4xl lg:text-5xl font-bold text-primary text-balance">The Heart of SynapCare</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold  text-center text-primary text-balance">The Heart of SynapCare</h2>
 
           <div className="space-y-6 text-lg leading-relaxed text-black">
   <p className="text-pretty">
