@@ -122,7 +122,7 @@ export function ServicesSection() {
               hidden md:flex
               absolute -left-10
               top-1/2 -translate-y-1/2
-              z-50
+              z-10
               items-center justify-center
               rounded-full
               bg-white/90
@@ -146,7 +146,7 @@ export function ServicesSection() {
               hidden md:flex
               absolute -right-10
               top-1/2 -translate-y-1/2
-              z-50
+              z-10
               items-center justify-center
               rounded-full
               bg-white/90

@@ -152,14 +152,14 @@ export default function HeroSection() {
       {/* Desktop Arrows */}
       <button
         onClick={goToPrevious}
-        className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-50 rounded-full bg-black/40 p-3 text-white hover:bg-black/60"
+        className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/20 p-3 text-white hover:bg-black/40"
       >
-        <ChevronLeft className="h-6 w-6" />
+          <ChevronLeft className="h-6 w-6" />
       </button>
 
       <button
         onClick={goToNext}
-        className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 z-50 rounded-full bg-black/40 p-3 text-white hover:bg-black/60"
+        className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/20 p-3 text-white hover:bg-black/40"
       >
         <ChevronRight className="h-6 w-6" />
       </button>

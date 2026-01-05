@@ -185,6 +185,7 @@ body {
   border-radius: 9999px; /* circle */
   background: rgba(255, 255, 255, 0.5);
   opacity: 1;
+  border: 2px solid #d1d5db;
   transition: all 0.3s ease;
 }
 

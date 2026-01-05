@@ -65,7 +65,16 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="pt-12 pb-20 lg:pt-20 lg:pb-32 bg-white">
+   <section
+  id="contact"
+  className="
+    pt-28 pb-20
+    lg:pt-32 lg:pb-32
+    bg-white
+    scroll-mt-28 lg:scroll-mt-32
+  "
+>
+
       <div className="container mx-auto px-4">
         <div className="text-left lg:text-center mb-10">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4 text-balance">
@@ -77,7 +86,8 @@ export function ContactSection() {
         </div>
 
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12">
-          <div className="bg-white rounded-2xl p-8 shadow-xl">
+          <div className="bg-white rounded-2xl p-8 shadow-2xl ring-1 ring-black/5">
+
             <form onSubmit={handleSubmit} className="space-y-6 py-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -134,7 +144,7 @@ export function ContactSection() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={5}
-                  className={`w-full ${errors.message ? "border-red-500" : ""}`}
+                  className={`w-full h-40 resize-none overflow-auto ${errors.message ? "border-red-500" : ""}`}
                 />
                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
@@ -143,16 +153,21 @@ export function ContactSection() {
   type="submit"
   disabled={isSubmitting}
   className="
-    btn-primary
-    group relative overflow-hidden rounded-full w-full
-    font-semibold
+    group relative overflow-hidden w-full rounded-full
+    bg-gradient-to-r from-primary to-secondary
+    text-white font-semibold
+    px-6 py-3
+    cursor-pointer
+    shadow-md
     transition-all duration-300 ease-out
     hover:-translate-y-0.5
-    // hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
+    hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
     disabled:opacity-60 disabled:cursor-not-allowed
   "
 >
   {isSubmitting ? "Sending..." : "Send Message"}
+
+
 
   {/* Light streak hover effect */}
   <span
@@ -176,7 +191,8 @@ export function ContactSection() {
 
           {/* Contact info section remains unchanged */}
           <div className="space-y-8">
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
+            <div className="bg-white rounded-2xl p-8 shadow-2xl ring-1 ring-black/5 overflow-visible">
+
               <h3 className="text-2xl font-bold mb-6 text-foreground">Get in Touch</h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -184,9 +200,15 @@ export function ContactSection() {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Email</h4>
-                    <p className="text-black">synapcare1510@gmail.com</p>
-                  </div>
+  <h4 className="font-semibold mb-1">Email</h4>
+  <a
+    href="mailto:synapcare1510@gmail.com"
+    className="text-black hover:text-primary transition"
+  >
+    synapcare1510@gmail.com
+  </a>
+</div>
+
                 </div>
                 <div className="flex items-start gap-4">
   <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center shrink-0">

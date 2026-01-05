@@ -12,16 +12,43 @@ export function FounderSection() {
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-12 items-center">
             {/* Founder Image */}
-            <div className="lg:col-span-2">
-              <div className="relative h-100 lg:h-125 rounded-3xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/Founder1.webp"
-                  alt="Aashral Surana - Founder of SynapCare"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
+           <div className="lg:col-span-2">
+  <div
+  className="
+    group
+    relative
+    h-[320px] md:h-[380px] lg:h-[500px]
+    aspect-[3/4] md:aspect-[4/5] lg:aspect-auto
+    rounded-3xl overflow-hidden
+    shadow-2xl
+    transition-all duration-700 ease-out
+    hover:-translate-y-1
+    hover:shadow-[0_25px_60px_rgba(0,0,0,0.25)]
+  "
+>
+
+    <Image
+      src="/images/Founder1.webp"
+      alt="Aashral Surana - Founder of SynapCare"
+      fill
+      className="
+        object-cover
+        transition-transform duration-700 ease-out
+        group-hover:scale-105
+      "
+    />
+
+    {/* subtle overlay for smoothness */}
+    <div className="
+      pointer-events-none
+      absolute inset-0
+      bg-black/0
+      transition-colors duration-700
+      group-hover:bg-black/10
+    " />
+  </div>
+</div>
+
 
             {/* Founder Info */}
             <div className="lg:col-span-3 space-y-6">
