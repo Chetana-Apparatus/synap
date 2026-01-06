@@ -19,7 +19,7 @@ export function Header() {
     { href: "#contact", label: "Contact" },
   ]
 
-  /* 🔒 Prevent background scroll when mobile menu is open */
+  
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : ""
     return () => {
@@ -64,7 +64,8 @@ export function Header() {
       <header
         className="
           fixed top-0 left-0 right-0 z-50
-          bg-white/70 backdrop-blur-xl border-b border-white/30 shadow-md
+           bg-white/60 backdrop-blur-xl border-b border-white/30 shadow-md
+          
           lg:bg-white lg:backdrop-blur-0 lg:border-none
         "
       >

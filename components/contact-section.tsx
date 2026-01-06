@@ -71,9 +71,11 @@ export function ContactSection() {
     pt-12 pb-20
     lg:pt-20 lg:pb-32
     bg-white
-    scroll-mt-20 lg:scroll-mt-20
+    scroll-mt-20
+    overflow-x-hidden
   "
 >
+
 
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
@@ -85,8 +87,10 @@ export function ContactSection() {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12">
-          <div className="bg-white rounded-2xl p-8 shadow-2xl ring-1 ring-black/5">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+
+          <div className="bg-white rounded-2xl p-5 sm:p-6 lg:p-8 shadow-lg lg:shadow-2xl ring-1 ring-black/5 overflow-hidden">
+
 
             <form onSubmit={handleSubmit} className="space-y-6 py-6">
               <div>
@@ -166,10 +170,6 @@ export function ContactSection() {
   "
 >
   {isSubmitting ? "Sending..." : "Send Message"}
-
-
-
-  {/* Light streak hover effect */}
   <span
     className="
       pointer-events-none
@@ -266,23 +266,36 @@ export function ContactSection() {
               </div>
             </div>
  
-            <div className="bg-linear-to-br from-primary to-secondary rounded-2xl p-8 text-white shadow-xl">
-              <h3 className="text-2xl font-bold mb-4">Office Hours</h3>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>Monday - Saturday</span>
-                  <span className="font-semibold">10:00 AM - 8:00 PM</span>
-                </div>
-                {/* <div className="flex justify-between">
-                  <span>Saturday</span>
-                  <span className="font-semibold">10:00 AM - 4:00 PM</span>
-                </div> */}
-                <div className="flex justify-between">
-                  <span>Sunday</span>
-                  <span className="font-semibold">Closed</span>
-                </div>
-              </div>
-            </div>
+            <div className="bg-linear-to-br from-primary to-secondary rounded-2xl p-6 sm:p-7 text-white shadow-lg">
+  <h3 className="text-xl sm:text-2xl font-bold mb-5">
+    Office Hours
+  </h3>
+
+  <div className="space-y-3 text-sm sm:text-base">
+    {/* Monday - Saturday */}
+    <div className="flex items-center justify-between">
+      <span className="font-medium text-white/90">
+        Monday – Saturday
+      </span>
+      <span className="font-semibold">
+        10:00 AM – 8:00 PM
+      </span>
+    </div>
+
+    {/* Sunday */}
+    <div className="flex items-center justify-between">
+      <span className="font-medium text-white/90">
+        Sunday
+      </span>
+      <span className="font-semibold text-white/90">
+        Closed
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
           </div>
         </div>
       </div>

@@ -94,7 +94,7 @@ const services = [
   },
 ]
 
-/* -------- COMPONENT -------- */
+
 
 export function ServicesSection() {
   const swiperRef = React.useRef<any>(null)
@@ -102,7 +102,7 @@ export function ServicesSection() {
   return (
     <section id="services" className="pt-12 pb-20 lg:pt-20 lg:pb-32 bg-[rgb(245,245,245)]">
       <div className="container mx-auto px-4">
-        {/* Heading */}
+       
         <div className="text-center mb-10">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">
             What We Offer
@@ -112,9 +112,9 @@ export function ServicesSection() {
           </p>
         </div>
 
-        {/* Swiper Container with Custom Navigation */}
+      
         <div className="relative">
-          {/* Custom Navigation Arrows - Before the cards */}
+         
           <button
             onClick={() => swiperRef.current?.slidePrev()}
             aria-label="Previous slide"
@@ -236,7 +236,7 @@ export function ServicesSection() {
                       </div>
                     </div>
 
-                    {/* Description */}
+                    
                     <div className="p-6 flex-1 flex">
                       <p
                         className={`text-sm leading-relaxed
@@ -257,10 +257,10 @@ export function ServicesSection() {
           </Swiper>
         </div>
 
-        {/* Pagination dots */}
+     
         <div className="services-pagination flex justify-center mt-6 mb-6" />
 
-        {/* CTA */}
+    
         <div className="flex justify-center mt-12">
   <Button
     size="lg"
@@ -276,12 +276,12 @@ export function ServicesSection() {
       hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
     "
   >
-    {/* Button text */}
+    
     <span className="relative z-10">
       <Link href="#contact">Book a Consultation</Link>
     </span>
 
-    {/* Light streak hover effect */}
+    
     <span
       className="
         pointer-events-none

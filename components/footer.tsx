@@ -1,20 +1,13 @@
 "use client"
-
-
-
 import Image from "next/image"
-
 import Link from "next/link"
-
 import { Facebook, Instagram, Linkedin, ArrowUp } from "lucide-react"
-
 import { useEffect, useState } from "react"
 
 
 
 export function Footer() {
-
-  const [showArrow, setShowArrow] = useState(false)
+const [showArrow, setShowArrow] = useState(false)
 
 
 
@@ -22,7 +15,7 @@ export function Footer() {
 
     const handleScroll = () => {
 
-      // Show arrow after Hero section
+      
 
       if (window.scrollY > window.innerHeight) {
 
@@ -70,15 +63,15 @@ export function Footer() {
 
 
 
-          {/* Logo & Tagline */}
+          
 
           <div className="md:col-span-2 flex flex-col items-start gap-4 leading-none ">
             <div className="relative w-[250px] h-[100px]">
   <Image
-    src="/images/logo3.webp"
+    src="/images/logo4.webp"
     alt="SynapCare"
     fill
-    className="object-contain brightness-0 invert "
+    className="object-contain "
     priority
   />
 </div>
@@ -90,7 +83,7 @@ export function Footer() {
             </p>
 
 
-            {/* Social Icons */}
+           
             <div className="flex items-center gap-4">
               <Link
                 href="https://www.facebook.com/SynapCareRehab/"
@@ -124,7 +117,7 @@ export function Footer() {
 
 
 
-          {/* Quick Links */}
+          
 
           <div>
 
@@ -198,7 +191,7 @@ export function Footer() {
 
 
 
-      {/* 🔼 Scroll To Top Arrow (visible after Hero section) */}
+      {/* Scroll To Top Arrow (visible after Hero section) */}
 
       {showArrow && (
 

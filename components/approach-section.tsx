@@ -54,18 +54,30 @@ export function ApproachSection() {
             </p>
           </div>
         </div>
+       <div className="mt-16 max-w-4xl mx-auto bg-linear-to-r from-primary to-secondary rounded-2xl p-6 sm:p-8 lg:p-12 shadow-xl">
+  <h3 className="text-2xl lg:text-3xl font-bold text-left lg:text-center text-white mb-4">
+    A Holistic Approach to Lifelong Well-Being
+  </h3>
 
-        {/* Info Banner */}
-        <div className="mt-16 max-w-4xl mx-auto bg-linear-to-r from-primary to-secondary rounded-2xl p-8 lg:p-12 text-center shadow-xl">
-          <h3 className="text-2xl lg:text-3xl font-bold  text-left lg:text-center text-white mb-4">
-            A Holistic Approach to Lifelong Well-Being
-          </h3>
-          <p className="text-xl lg:text-2xl text-white leading-relaxed text-left lg:text-center text-pretty">
-            At SynapCare Rehabilitation Center, we are committed to enhancing quality of life for individuals of all ages through personalized, evidence-based rehabilitation. Our multidisciplinary team provides comprehensive care across communication, cognition, swallowing, occupational therapy, physiotherapy, and diet & nutrition services, ensuring holistic, coordinated care under one roof.
+  <p
+    className="
+      text-base sm:text-lg lg:text-2xl
+      text-white
+      leading-relaxed
+      text-left
+      lg:text-center
+      lg:text-justify
+      text-pretty
+    "
+  >
+    At SynapCare Rehabilitation Center, we are committed to enhancing quality of life
+    for individuals of all ages through personalized, evidence-based rehabilitation.
+    Our multidisciplinary team provides comprehensive care across communication,
+    cognition, swallowing, occupational therapy, physiotherapy, and diet & nutrition
+    services, ensuring holistic, coordinated care under one roof.
+  </p>
+</div>
 
-
-          </p>
-        </div>
       </div>
     </section>
   )

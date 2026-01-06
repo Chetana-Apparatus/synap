@@ -60,7 +60,7 @@ aspect-[3/4] md:object-contain lg:aspect-[3/4]
             <div className="lg:col-span-3 space-y-6">
               <div>
                 <h3 className="text-3xl font-bold text-foreground mb-2">Aashral Surana</h3>
-                <p className="text-xl text-primary font-medium">Speech-Language Pathologist & Audiologist</p>
+                <p className="text-xl text-primary font-medium">Speech Language Pathologist & Audiologist</p>
                 <p className="text-lg text-black">Founder, SynapCare</p>
               </div>
 

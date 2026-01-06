@@ -19,8 +19,6 @@ export function AboutSection() {
   </p>
 </div>
 
-
-          {/* Key Values */}
           <div className="grid md:grid-cols-3 gap-8 pt-12">
              {/* Card 1 */}
   <div className="space-y-4 text-center border border-border rounded-2xl p-6 hover:shadow-lg transition-all duration-300">

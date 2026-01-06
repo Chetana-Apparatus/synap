@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
@@ -41,8 +40,6 @@ const slides = [
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-
-  /* ---------------- SWIPE (MOBILE ONLY) ---------------- */
   const touchStartX = useRef<number | null>(null)
   const touchEndX = useRef<number | null>(null)
   const minSwipeDistance = 50
@@ -70,8 +67,6 @@ export default function HeroSection() {
     if (distance > 0) goToNext()
     else goToPrevious()
   }
-
-  /* ---------------- AUTOPLAY ---------------- */
   useEffect(() => {
     if (!isAutoPlaying) return
     const interval = setInterval(() => {
@@ -112,7 +107,7 @@ export default function HeroSection() {
             index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* Background */}
+      
           <div
             className="absolute inset-0 bg-cover bg-top bg-no-repeat"
             style={{ backgroundImage: `url(${slide.image})` }}
@@ -120,7 +115,7 @@ export default function HeroSection() {
             <div className="absolute inset-0 bg-black/50" />
           </div>
 
-          {/* Content */}
+          
           <div className="relative z-10 flex h-full items-center justify-center px-4">
             <div className="max-w-4xl text-center">
               <h1 className="mb-4 text-4xl md:text-6xl lg:text-7xl font-bold text-white">
@@ -149,7 +144,6 @@ export default function HeroSection() {
         </div>
       ))}
 
-      {/* Desktop Arrows */}
       <button
         onClick={goToPrevious}
         className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/20 p-3 text-white hover:bg-black/40"
@@ -163,9 +157,7 @@ export default function HeroSection() {
       >
         <ChevronRight className="h-6 w-6" />
       </button>
-
-      {/* Pagination Dots */}
-      <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-3">
+<div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-3">
         {slides.map((_, index) => (
           <button
             key={index}
