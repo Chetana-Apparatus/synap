@@ -73,8 +73,8 @@ aspect-[3/4] md:object-contain lg:aspect-[3/4]
                   <div>
                     <h4 className="font-semibold text-lg mb-2">Education</h4>
                     <ul className="space-y-1 text-black">
-                      <li>• BASLP – Audiology & Speech-Language Pathology</li>
-                      <li>• MSc – Speech-Language Pathology</li>
+                      <li>• BASLP – Audiology & SpeechLanguage Pathology</li>
+                      <li>• MSc – Speech Language Pathology</li>
                     </ul>
                   </div>
                 </div>
