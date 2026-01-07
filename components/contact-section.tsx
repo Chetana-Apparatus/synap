@@ -92,7 +92,8 @@ export function ContactSection() {
           <div className="bg-white rounded-2xl p-5 sm:p-6 lg:p-8 shadow-lg lg:shadow-2xl ring-1 ring-black/5 overflow-hidden">
 
 
-            <form onSubmit={handleSubmit} className="space-y-6 py-6">
+            <form onSubmit={handleSubmit} className="space-y-8 py-10">
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Full Name
@@ -147,8 +148,9 @@ export function ContactSection() {
                   placeholder="Tell us about your needs..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={5}
-                  className={`w-full h-40 resize-none overflow-auto ${errors.message ? "border-red-500" : ""}`}
+                  rows={6}
+className="w-full min-h-[180px] resize-none overflow-auto"
+
                 />
                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
@@ -196,45 +198,49 @@ export function ContactSection() {
               <h3 className="text-2xl font-bold mb-6 text-foreground">Get in Touch</h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-  <h4 className="font-semibold mb-1">Email</h4>
   <a
     href="mailto:synapcare1510@gmail.com"
-    className="text-black hover:text-primary transition"
+    className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0
+               hover:bg-primary/20 transition"
+    aria-label="Email SynapCare"
   >
-    synapcare1510@gmail.com
+    <Mail className="w-6 h-6 text-primary" />
   </a>
+
+  <div>
+    <h4 className="font-semibold mb-1">Email</h4>
+    <a
+      href="mailto:synapcare1510@gmail.com"
+      className="text-black hover:text-primary transition"
+    >
+      synapcare1510@gmail.com
+    </a>
+  </div>
 </div>
 
-                </div>
                 <div className="flex items-start gap-4">
-  <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center shrink-0">
+  <a
+    href="tel:+917387770918"
+    className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center shrink-0
+               hover:bg-secondary/20 transition"
+    aria-label="Call SynapCare"
+  >
     <Phone className="w-6 h-6 text-secondary" />
-  </div>
+  </a>
 
   <div>
     <h4 className="font-semibold mb-1">Phone</h4>
-
     <div className="flex flex-col gap-1 text-black">
-      <a
-        href="tel:+917387770918"
-        className="hover:text-primary transition"
-      >
+      <a href="tel:+917387770918" className="hover:text-primary transition">
         +91 73877 70918
       </a>
-
-      <a
-        href="tel:+917709370918"
-        className="hover:text-primary transition"
-      >
+      <a href="tel:+917709370918" className="hover:text-primary transition">
         +91 77093 70918
       </a>
     </div>
   </div>
 </div>
+
 
  
                 {/* <div className="flex items-start gap-4">
@@ -248,48 +254,82 @@ export function ContactSection() {
                 </div> */}
  
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent/50 rounded-full flex items-center justify-center shrink-0">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Location</h4>
-                    <a
+  <a
+    href="https://www.google.com/maps?q=Asha+Apartment,+Sahil+Park,+Sanewadi,+Aundh,+Pune,+Maharashtra+411067"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-12 h-12 bg-accent/50 rounded-full flex items-center justify-center shrink-0
+               hover:bg-accent/70 transition"
+    aria-label="Open location in Google Maps"
+  >
+    <MapPin className="w-6 h-6 text-primary" />
+  </a>
+
+  <div>
+    <h4 className="font-semibold mb-1">Location</h4>
+    <a
       href="https://www.google.com/maps?q=Asha+Apartment,+Sahil+Park,+Sanewadi,+Aundh,+Pune,+Maharashtra+411067"
       target="_blank"
       rel="noopener noreferrer"
-      className="text-black hover:text-primary transition underline-offset-4 hover:text-primary cursor-pointer"
+      className="text-black hover:text-primary transition"
     >
       Asha Apartment, Sahil Park, Sanewadi, Aundh, Pune, Maharashtra 411067
     </a>
-                  </div>
-                </div>
+  </div>
+</div>
+
               </div>
             </div>
  
-            <div className="bg-linear-to-br from-primary to-secondary rounded-2xl p-6 sm:p-7 text-white shadow-lg">
+<div className="bg-linear-to-br from-primary to-secondary rounded-2xl p-6 sm:p-7 text-white shadow-lg">
   <h3 className="text-xl sm:text-2xl font-bold mb-5">
     Office Hours
   </h3>
 
   <div className="space-y-3 text-sm sm:text-base">
-    {/* Monday - Saturday */}
+    {/* Monday */}
     <div className="flex items-center justify-between">
-      <span className="font-medium text-white/90">
-        Monday – Saturday
-      </span>
-      <span className="font-semibold">
-        10:00 AM – 8:00 PM
-      </span>
+      <span className="font-medium text-white/85">Monday</span>
+      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
     </div>
+
+    {/* Tuesday */}
+    <div className="flex items-center justify-between">
+      <span className="font-medium text-white/85">Tuesday</span>
+      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+    </div>
+
+    {/* Wednesday */}
+    <div className="flex items-center justify-between">
+      <span className="font-medium text-white/85">Wednesday</span>
+      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+    </div>
+
+    {/* Thursday */}
+    <div className="flex items-center justify-between">
+      <span className="font-medium text-white/85">Thursday</span>
+      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+    </div>
+
+    {/* Friday */}
+    <div className="flex items-center justify-between">
+      <span className="font-medium text-white/85">Friday</span>
+      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+    </div>
+
+    {/* Saturday */}
+    <div className="flex items-center justify-between">
+      <span className="font-medium text-white/85">Saturday</span>
+      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+    </div>
+
+    {/* Divider */}
+    <div className="h-px bg-white/20 my-2" />
 
     {/* Sunday */}
     <div className="flex items-center justify-between">
-      <span className="font-medium text-white/90">
-        Sunday
-      </span>
-      <span className="font-semibold text-white/90">
-        Closed
-      </span>
+      <span className="font-medium text-white/70">Sunday</span>
+      <span className="font-semibold text-white/60">Closed</span>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect,useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -18,7 +18,15 @@ export function Header() {
     { href: "#founder", label: "Founder" },
     { href: "#contact", label: "Contact" },
   ]
-
+const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+ 
+  
+    // const handleScroll = () => {
+    //   setIsScrolled(window.scrollY > 10);
+    // };
   
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : ""
@@ -62,15 +70,13 @@ export function Header() {
     <>
       
       <header
-        className="
-          fixed top-0 left-0 right-0 z-50
-           bg-white/60 backdrop-blur-xl border-b border-white/30 shadow-md
-          
-          lg:bg-white lg:backdrop-blur-0 lg:border-none
-        "
-      >
-        <div className="mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+      className={`fixed top-0 left-0 w-full z-50 px-0 transition-all duration-300
+        bg-white/60 shadow-[0_0_30px_rgba(0,0,0,0.2)] border-b border-[rgba(150,150,149,0.6)] py-0 backdrop-blur-md
+        lg:bg-white lg:shadow-none lg:backdrop-blur-none lg:border-0 lg:py-4
+      `}>
+    
+        <div className="mx-auto px-4 lg:px-4">
+          <div className="flex items-center justify-between h-20 lg:h-15">
            
             <Link href="#home" className="flex items-center gap-2">
               <Image
@@ -104,7 +110,7 @@ export function Header() {
               ))}
             </nav>
 
-            {/* Desktop CTA */}
+            
             <div className="hidden lg:flex items-center gap-4">
               <Button
                 asChild
@@ -129,17 +135,17 @@ export function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-2"
+              className="lg:hidden p-3"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open menu"
             >
-              <Menu className="h-8 w-8" />
+              <Menu className="h-9 w-9" />
             </button>
           </div>
         </div>
       </header>
 
-      {/* ================= FULL SCREEN MOBILE MENU ================= */}
+    /
       {isMobileMenuOpen && (
         <div
           className="
@@ -151,7 +157,7 @@ export function Header() {
           "
         >
           {/* Top Bar */}
-          <div className="flex items-center justify-between h-20 px-4 border-b">
+          <div className="flex items-center justify-between h-20 px-0 border-b">
             {/* SAME LOGO SIZE */}
             <Image
               src="/images/Logo 1.webp"
@@ -161,8 +167,8 @@ export function Header() {
               className="h-40 w-auto"
             />
 
-            <button onClick={() => setIsMobileMenuOpen(false)}>
-              <X className="h-8 w-8" />
+            <button className="p-2" onClick={() => setIsMobileMenuOpen(false)}>
+              <X className="h-9 w-9" />
             </button>
           </div>
 

@@ -94,6 +94,8 @@ export default function HeroSection() {
   }
 
   return (
+    <>
+    <div className="min-h-14 w-full bg-white"></div>
     <div
       className="relative w-full min-h-[85vh] lg:min-h-[100vh] overflow-hidden"
       onTouchStart={onTouchStart}
@@ -118,7 +120,7 @@ export default function HeroSection() {
           
           <div className="relative z-10 flex h-full items-center justify-center px-4">
             <div className="max-w-4xl text-center">
-              <h1 className="mb-4 text-4xl md:text-6xl lg:text-7xl font-bold text-white">
+              <h1 className="mb-4 text-4xl lg:text-5xl lg:text-7xl font-bold text-white">
                 {slide.title}
               </h1>
 
@@ -171,5 +173,6 @@ export default function HeroSection() {
         ))}
       </div>
     </div>
+    </>
   )
 }

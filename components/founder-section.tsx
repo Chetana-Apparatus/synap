@@ -56,15 +56,15 @@ aspect-[3/4] md:object-contain lg:aspect-[3/4]
 </div>
 
 
-            {/* Founder Info */}
+            
             <div className="lg:col-span-3 space-y-6">
               <div>
                 <h3 className="text-3xl font-bold text-foreground mb-2">Aashral Surana</h3>
-                <p className="text-xl text-primary font-medium">Speech Language Pathologist & Audiologist</p>
-                <p className="text-lg text-black">Founder, SynapCare</p>
+                <p className="text-xl text-primary font-medium text-balance">Speech Language Pathologist & Audiologist</p>
+                <p className="text-lg text-black text-balance">Founder, SynapCare Rehabilitation Center </p>
               </div>
 
-              {/* Education */}
+              
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
@@ -73,13 +73,13 @@ aspect-[3/4] md:object-contain lg:aspect-[3/4]
                   <div>
                     <h4 className="font-semibold text-lg mb-2">Education</h4>
                     <ul className="space-y-1 text-black">
-                      <li>• BASLP – Audiology & SpeechLanguage Pathology</li>
+                      <li>• BASLP – Audiology & Speech Language Pathology</li>
                       <li>• MSc – Speech Language Pathology</li>
                     </ul>
                   </div>
                 </div>
 
-                {/* Advanced Training */}
+               
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
                     <Award className="w-5 h-5 text-secondary" />
@@ -95,7 +95,7 @@ aspect-[3/4] md:object-contain lg:aspect-[3/4]
                 </div>
               </div>
 
-              {/* Vision */}
+              
               <div className="pt-4 border-t">
                 <p className="text-black  leading-relaxed text-pretty">
                   With a deep passion for helping individuals rediscover their voice and abilities, Aashral founded
