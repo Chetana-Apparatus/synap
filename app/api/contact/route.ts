@@ -140,7 +140,7 @@ export async function POST(request: NextRequest) {
     // Send email to website owner
     await transporter.sendMail({
       from: `"SynapCare Website" <apparatusasmail@gmail.com>`,
-      to: "alekarchetana@gmail.com", // you receive it
+      to: "synapcare1510@gmail.com", // you receive it
       replyTo: email, // reply goes to user
       subject: "New Contact Form Submission",
       html: contactEmailTemplate({ name, email, phone, message }),
