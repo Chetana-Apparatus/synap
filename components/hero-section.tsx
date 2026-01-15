@@ -10,30 +10,33 @@ const slides = [
     title: "Reconnect",
     subtitle: "Restore communication, confidence, and connection",
     description:
-      "Our speech and communication therapy programs help you rebuild meaningful connections with loved ones and regain your confidence in social interactions.",
+      "Our speech and communication therapy program helps children and adults rebuild meaningful connections, express themselves with clarity, and regain confidence in everyday interactions",
     cta: "Explore Services",
     href: "/#services",
     image: "/images/S1.webp",
+    alt: "Speech and communication therapy session at SynapCare Rehabilitation Center in Aundh Pune"
   },
   {
     id: 2,
     title: "Relearn",
-    subtitle: "Rebuild essential skills for everyday life",
+    subtitle: "Rebuild Essential Skills for Everyday Life",
     description:
-      "Through cognitive and occupational therapy, we help you rediscover and strengthen the skills needed for daily activities and independent living.",
+      "Through cognitive and occupational therapy, we focus on helping children and adults strengthen their memory, attention, problem-solving, and daily living skills to support independence and confidence",
     cta: "Our Approach",
     href: "/#approach",
     image: "/images/S2.webp",
+    alt: "Cognitive rehabilitation for daily living skills at SynapCare Rehabilitation Center Pune"
   },
   {
     id: 3,
-    title: "Rediscover Strength",
+    title: "Rediscover Strength ",
     subtitle: "Empowering body, mind, and well-being",
     description:
-      "Our comprehensive approach combines physiotherapy, emotional counseling, and wellness programs to help you achieve holistic health and resilience.",
+      "Our holistic rehabilitation approach integrates physiotherapy, emotional support, and wellness-focused care to build strength, resilience, and long-term independence. ",
     cta: "Book a Consultation",
     href: "/#contact",
     image: "/images/S3.webp",
+    alt: "Holistic rehabilitation with physiotherapy and wellness care at SynapCare Rehabilitation Center Pune"
   },
 ]
 

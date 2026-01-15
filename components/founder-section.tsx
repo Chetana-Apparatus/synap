@@ -31,7 +31,7 @@ aspect-[3/4] md:object-contain lg:aspect-[3/4]
 
    <Image
   src="/images/Founder1.webp"
-  alt="Aashral Surana - Founder of SynapCare"
+  alt="Aashral Surana, Founder and Speech Language Pathologist at SynapCare Rehabilitation Center, Pune"
   fill
   className="
     object-cover
@@ -98,10 +98,7 @@ aspect-[3/4] md:object-contain lg:aspect-[3/4]
               
               <div className="pt-4 border-t">
                 <p className="text-black  leading-relaxed text-pretty">
-                  With a deep passion for helping individuals rediscover their voice and abilities, Aashral founded
-                  SynapCare to create a healing space where evidence-based care meets genuine compassion. Her expertise
-                  spans across speech, language, swallowing, and cognitive rehabilitation, making her a trusted partner
-                  in your journey toward better health.
+                  Aashral Surana is a dedicated Speech Language Pathologist & Audiologist committed to helping individuals of all ages regain communication, confidence, and independence. She combines her clinical expertise with compassion to guide every client and their family through a personalized rehabilitation journey.Her vision is to create a rehabilitation space where capabilities are restored, hope is renewed, and every individual feels understood and supported. 
                 </p>
               </div>
             </div>

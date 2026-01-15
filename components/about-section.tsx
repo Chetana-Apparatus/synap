@@ -15,7 +15,7 @@ export function AboutSection() {
 
           <div className="space-y-6 text-lg leading-relaxed text-black">
   <p className="text-pretty">
-    "In SynapCare Rehabilitation Center, we believe that every mind has the capacity to reconnect, to learn and to discover their capabilities. Our name is derived from "synapse", which refers to the connections within the brain that enable us to speak, to move, to swallow, to think, and to communicate. When they are strengthened and supported, everything changes because capabilities develop and hope is restored."
+    "At SynapCare Rehabilitation Center, we see beyond challenges and focus on potential.We believe every person has the ability to reconnect, relearn, and rediscover their strengths. Our name is inspired by the word ‘synapse,’ the powerful connections in the brain that enable us to speak, move, swallow, think, and communicate. With the right care, patience, and support, these connections grow stronger and real change follows.Every step forward matters. As skills begin to return and confidence grows, so does hope. At SynapCare, we walk alongside you and your family, focused not just on recovery but on helping you live, connect, and thrive again.  "
   </p>
 </div>
 
@@ -27,7 +27,7 @@ export function AboutSection() {
     </div>
     <h3 className="font-semibold text-xl">Personalized Care Plans</h3>
     <p className="text-sm text-black">
-      Tailored therapy programs designed around individual needs and goals.
+      Every individual’s journey is unique. We create therapy plans tailored to personal needs, goals, and everyday life because progress works best when care is truly personal. 
     </p>
   </div>
              {/* Card 2 */}
@@ -37,7 +37,7 @@ export function AboutSection() {
     </div>
     <h3 className="font-semibold text-xl">Family Centered Support</h3>
     <p className="text-sm text-black">
-     Active involvement of families and caregivers throughout the care journey.
+    We actively involve families and caregivers at every step, offering guidance, education, and support to ensure progress continues beyond therapy sessions.
     </p>
   </div>
             {/* Card 3 */}
@@ -47,7 +47,7 @@ export function AboutSection() {
     </div>
     <h3 className="font-semibold text-xl">Integrated Therapy Approach</h3>
     <p className="text-sm text-black">
-    Collaborative care addressing physical, cognitive, and communication needs.
+    Our team works together to address physical, cognitive, emotional and communication needs, ensuring coordinated care that supports meaningful, whole-person recovery. 
     </p>
   </div>
           </div>

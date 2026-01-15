@@ -16,7 +16,7 @@ export function ApproachSection() {
         <div className="text-center mb-10">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4 text-balance">Our Approach</h2>
           <p className="text-xl text-black max-w-2xl mx-auto text-pretty">
-            Holistic, multidisciplinary treatment centered around your unique needs
+            A holistic, multidisciplinary approach tailored to your individual needs, supporting independence and confidence at every step. 
           </p>
         </div>
 
@@ -29,7 +29,7 @@ export function ApproachSection() {
             </div>
             <h3 className="text-2xl font-bold mb-4 text-foreground">Evidence-Based Care</h3>
             <p className="text-black leading-relaxed">
-              We use scientifically proven methods and stay updated with the latest best practices to ensure safe, effective, and high-quality care for every individual.
+              We use proven, science-backed methods and stay updated with the latest best practices to provide safe, effective, and high-quality care for every individual. 
             </p>
           </div>
 
@@ -39,8 +39,7 @@ export function ApproachSection() {
             </div>
             <h3 className="text-2xl font-bold mb-4 text-foreground">Compassion & Empathy</h3>
             <p className="text-black leading-relaxed">
-              Every individual's journey is unique. We listen, understand, and support you with genuine care and
-              emotional sensitivity at every step.
+              We listen, understand, and support everyone with genuine care and emotional sensitivity throughout their rehabilitation journey. 
             </p>
           </div>
 
@@ -50,7 +49,7 @@ export function ApproachSection() {
             </div>
             <h3 className="text-2xl font-bold mb-4 text-foreground">Goal-Oriented Rehabilitation</h3>
             <p className="text-black leading-relaxed">
-              We work collaboratively with you to set meaningful, achievable goals and celebrate every milestone on your path to independence.
+              We set meaningful, achievable goals with you and celebrate every milestone on your journey to independence. 
             </p>
           </div>
         </div>
@@ -70,11 +69,9 @@ export function ApproachSection() {
       text-pretty
     "
   >
-    At SynapCare Rehabilitation Center, we are committed to enhancing quality of life
-    for individuals of all ages through personalized, evidence-based rehabilitation.
-    Our multidisciplinary team provides comprehensive care across communication,
-    cognition, swallowing, occupational therapy, physiotherapy, and diet & nutrition
-    services, ensuring holistic, coordinated care under one roof.
+    At SynapCare Rehabilitation Center,we are dedicated to improving the quality of life for individuals of all ages. 
+    Our personalized, evidence-based rehabilitation covers communication, cognition, swallowing, occupational therapy, physiotherapy, and diet & nutrition.
+    By combining the expertise of our multidisciplinary team, we provide coordinated, holistic care under one roof, helping every individual achieve meaningful progress,independence,and overall well-being. 
   </p>
 </div>
 

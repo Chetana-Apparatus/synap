@@ -83,7 +83,7 @@ export function ContactSection() {
             Start Your Journey with SynapCare
           </h2>
           <p className="text-xl text-black max-w-2xl mx-auto text-pretty">
-            Your care begins with a conversation. Reach out to us today.
+            Your path to recovery and independence begins with a conversation. Reach out to us today and let our compassionate team guide you or your loved one with personalized, evidence-based care. 
           </p>
         </div>
 
