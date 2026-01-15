@@ -71,7 +71,7 @@ export function ApproachSection() {
   >
     At SynapCare Rehabilitation Center,we are dedicated to improving the quality of life for individuals of all ages. 
     Our personalized, evidence-based rehabilitation covers communication, cognition, swallowing, occupational therapy, physiotherapy, and diet & nutrition.
-    By combining the expertise of our multidisciplinary team, we provide coordinated, holistic care under one roof, helping every individual achieve meaningful progress,independence,and overall well-being. 
+    By combining the expertise of our multidisciplinary team, we provide coordinated, holistic care under one roof, helping every individual achieve meaningful progress, independence, and overall well-being. 
   </p>
 </div>
 
