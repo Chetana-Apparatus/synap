@@ -15,7 +15,7 @@ export function AboutSection() {
 
           <div className="space-y-6 text-lg leading-relaxed text-black">
   <p className="text-pretty">
-    "At SynapCare Rehabilitation Center, we see beyond challenges and focus on potential. We believe every person has the ability to reconnect, relearn, and rediscover their strengths. Our name is inspired by the word ‘synapse,’ the powerful connections in the brain that enable us to speak, move, swallow, think, and communicate. With the right care, patience, and support, these connections grow stronger and real change follows. Every step forward matters. As skills begin to return and confidence grows, so does hope. At SynapCare, we walk alongside you and your family, focused not just on recovery but on helping you live, connect, and thrive again.  "
+    "At SynapCare Rehabilitation Center, we see beyond challenges and focus on potential. We believe every person has the ability to reconnect, relearn, and rediscover their strengths. Our name is inspired by the word "synapse", the powerful connections in the brain that enable us to speak, move, swallow, think, and communicate. With the right care, patience, and support, these connections grow stronger and real change follows. Every step forward matters. As skills begin to return and confidence grows, so does hope. At SynapCare, we walk alongside you and your family, focused not just on recovery but on helping you live, connect, and thrive again.  "
   </p>
 </div>
 
