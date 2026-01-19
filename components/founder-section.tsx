@@ -30,7 +30,7 @@ aspect-[3/4] md:object-contain lg:aspect-[3/4]
 >
 
    <Image
-  src="/images/Founder1.webp"
+  src="/images/founder 1.webp"
   alt="Aashral Surana, Founder and Speech Language Pathologist at SynapCare Rehabilitation Center, Pune"
   fill
   className="
