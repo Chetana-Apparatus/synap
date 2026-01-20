@@ -35,6 +35,40 @@ const [menuOpen, setMenuOpen] = useState(false);
     }
   }, [isMobileMenuOpen])
 
+  // Handle smooth scroll with header offset
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault()
+      setIsMobileMenuOpen(false)
+      
+      // Wait for menu to close before scrolling
+      setTimeout(() => {
+        // Special handling for home - scroll to top
+        if (href === "#home") {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          })
+          return
+        }
+        
+        const element = document.querySelector(href) as HTMLElement
+        if (element) {
+          const headerHeight = 80 // Fixed header height
+          const isMobile = window.innerWidth < 1024 // lg breakpoint
+          const extraSpacing = isMobile ? 0 : 20 // No extra spacing on mobile, 20px on desktop
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+          const offsetPosition = elementPosition - headerHeight - extraSpacing
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          })
+        }
+      }, 100)
+    }
+  }
+
   
   useEffect(() => {
     const updateActiveLink = () => {
@@ -94,6 +128,7 @@ const [menuOpen, setMenuOpen] = useState(false);
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
                   className={`relative font-medium transition-colors
                     ${
                       activeLink === link.href
@@ -122,14 +157,17 @@ const [menuOpen, setMenuOpen] = useState(false);
                   shadow-md
                 "
               >
-                <Link href="#contact">Book a Consultation</Link>
+                <Link href="#contact" onClick={(e) => handleLinkClick(e, "#contact")}>Book a Consultation</Link>
               </Button>
 
               <Button
                 variant="outline"
                 className="rounded-full border-primary text-primary px-6 py-3"
+                asChild
               >
-                Call Now
+                <a href="tel:+917387770918" aria-label="Call SynapCare at +91 73877 70918">
+                  Call Now
+                </a>
               </Button>
             </div>
 
@@ -178,7 +216,7 @@ const [menuOpen, setMenuOpen] = useState(false);
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className={`py-4 px-4 rounded-xl text-lg font-medium transition-all
                   ${
                     activeLink === link.href
@@ -203,7 +241,7 @@ const [menuOpen, setMenuOpen] = useState(false);
               >
                 <Link
                   href="#contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleLinkClick(e, "#contact")}
                 >
                   Book a Consultation
                 </Link>
@@ -211,9 +249,12 @@ const [menuOpen, setMenuOpen] = useState(false);
 
               <Button
                 variant="outline"
-      className="w-full rounded-full border-primary text-primary py-4"
+                className="w-full rounded-full border-primary text-primary py-4"
+                asChild
               >
-                Call Now
+                <a href="tel:+917387770918" aria-label="Call SynapCare at +91 73877 70918">
+                  Call Now
+                </a>
               </Button>
             </div>
           </nav>

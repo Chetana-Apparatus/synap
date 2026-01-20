@@ -144,14 +144,14 @@ export function ServicesSection() {
 
 
 
-      <section id="services" className="pt-12 pb-20 lg:pt-20 lg:pb-32 bg-[rgb(245,245,245)]">
+      <section id="services" className="pt-10 pb-10 lg:pt-14 lg:pb-14 bg-[rgb(245,245,245)]">
         <div className="container mx-auto px-4">
 
-          <div className="text-center mb-10">
-            <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">
+          <div className="text-center mb-4 lg:mb-8">
+            <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-2 lg:mb-4">
               What We Offer
             </h2>
-            <p className="text-xl text-foreground max-w-2xl mx-auto">
+            <p className="text-base lg:text-xl text-foreground max-w-2xl mx-auto">
               Explore our range of personalized rehabilitation services designed to support recovery, independence, and everyday well-being.
             </p>
           </div>
@@ -247,15 +247,22 @@ export function ServicesSection() {
                     `}
                     >
                       {/* IMAGE */}
-                      <div className="relative h-72 shrink-0 overflow-hidden">
+                      {/* IMAGE */}
+<div className="relative aspect-square w-full shrink-0 overflow-hidden rounded-t-3xl">
+
                         <Image
-                          src={service.image}
-                          alt={service.title}
-                          fill
-                          className={`object-cover transition-transform duration-700 group-hover:scale-105
-                          ${service.status === "coming" ? "grayscale blur-[1px]" : ""}
-                        `}
-                        />
+  src={service.image}
+  alt={service.title}
+  fill
+  className={`object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110
+    ${service.status === "coming" ? "grayscale blur-[1px]" : ""}
+  `}
+  sizes="(max-width: 640px) 100vw, 
+         (max-width: 1024px) 50vw, 
+         (max-width: 1280px) 33vw, 
+         25vw"
+/>
+
 
                         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
 
@@ -279,22 +286,25 @@ export function ServicesSection() {
                         </div>
                       </div>
 
+                      <div className="px-3 pt-2 pb-3 lg:px-5 lg:pt-2 lg:pb-4 flex-1 flex flex-col">
 
-                      <div className="p-6 flex-1 flex">
+
                         <p
-                          className={`text-sm leading-relaxed
+                          className={`text-sm lg:text-sm leading-relaxed line-clamp-3
                           ${service.status === "coming"
                               ? "text-black"
                               : "text-black"
                             }
                         `}
                         >
-                          {service.description.slice(0, 500)}{
-                            service.description.length > 500 ? <>
-                              <button onClick={() => handlePopUp(index)} className=" text-primary font-bold block"> Read More</button>
-                            </> : ""
-                          }
+                          {service.description}
                         </p>
+                        <button 
+                          onClick={() => handlePopUp(index)} 
+                          className="text-primary font-bold mt-1 lg:mt-1 text-left hover:underline transition-all text-xs lg:text-sm"
+                        >
+                          Read More
+                        </button>
                       </div>
                     </Card>
                   </SwiperSlide>
@@ -304,10 +314,10 @@ export function ServicesSection() {
           </div>
 
 
-          <div className="services-pagination flex justify-center mt-6 mb-6" />
+          <div className="services-pagination flex justify-center mt-4 mb-4 lg:mt-6 lg:mb-6" />
 
 
-          <div className="flex justify-center mt-12">
+          <div className="flex justify-center mt-6 lg:mt-12">
             <Button
               size="lg"
               className="

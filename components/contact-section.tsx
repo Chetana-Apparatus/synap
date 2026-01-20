@@ -68,8 +68,7 @@ export function ContactSection() {
    <section
   id="contact"
   className="
-    pt-12 pb-20
-    lg:pt-20 lg:pb-32
+   pt-10 pb-10 lg:pt-14 lg:pb-14
     bg-white
     scroll-mt-20
     overflow-x-hidden

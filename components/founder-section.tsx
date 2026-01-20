@@ -3,9 +3,9 @@ import { GraduationCap, Award } from "lucide-react"
 
 export function FounderSection() {
   return (
-    <section id="founder" className="pt-12 pb-20 lg:pt-20 lg:pb-32 bg-[rgb(245, 245, 245)]">
+    <section id="founder" className="pt-10 pb-10 lg:pt-14 lg:pb-14 bg-[rgb(245, 245, 245)]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">Meet the Founder</h2>
         </div>
 

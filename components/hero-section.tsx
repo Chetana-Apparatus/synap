@@ -99,8 +99,9 @@ export default function HeroSection() {
   return (
     <>
     <div className="min-h-14 w-full bg-white"></div>
-    <div
-      className="relative w-full min-h-[85vh] lg:min-h-[100vh] overflow-hidden"
+    <section
+      id="home"
+      className="relative w-full h-screen overflow-hidden"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -175,7 +176,7 @@ export default function HeroSection() {
           />
         ))}
       </div>
-    </div>
+    </section>
     </>
   )
 }

@@ -157,6 +157,18 @@
     @apply bg-background text-foreground;
   }
 
+  /* Scroll offset for fixed header - ensures section headings are visible when navigating */
+  section[id] {
+    scroll-margin-top: 80px; /* Fixed header height (80px) - no extra spacing for cleaner mobile view */
+  }
+  
+  /* Add extra spacing only on desktop */
+  @media (min-width: 1024px) {
+    section[id] {
+      scroll-margin-top: 100px; /* Fixed header height (80px) + extra spacing (20px) for desktop */
+    }
+  }
+
   /* Global button styles for consistency */
   .btn-primary {
     @apply bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl;
