@@ -272,7 +272,7 @@ className="w-full min-h-[180px] resize-none overflow-auto"
       rel="noopener noreferrer"
       className="text-black hover:text-primary transition"
     >
-      Asha Apartment, Sahil Park, Sanewadi, Aundh, Pune, Maharashtra 411067
+      Asha Apartment, Sanewadi, Aundh, Pune, Maharashtra 411067
     </a>
   </div>
 </div>

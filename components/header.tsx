@@ -114,7 +114,7 @@ const [menuOpen, setMenuOpen] = useState(false);
            
             <Link href="#home" className="flex items-center gap-2">
               <Image
-                src="/images/Logo 1.webp"
+                src="/images/Logo1.webp"
                 alt="SynapCare Rehabilitation Center"
                 width={280}
                 height={60}
