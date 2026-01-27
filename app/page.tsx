@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-
-
+import Script from "next/script";
+ 
 import { Header } from "@/components/header"
 import HeroSection from "@/components/hero-section"
 import { AboutSection } from "@/components/about-section"
@@ -61,6 +61,19 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+    {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-TZB6PLRY40"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TZB6PLRY40');
+          `}
+        </Script>
     <script
   type="application/ld+json"
   dangerouslySetInnerHTML={{
