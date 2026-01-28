@@ -12,7 +12,7 @@ import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
   verification: {
-    google: "yB3lyyRmS7SmSW6Mml8-u799Y0ta7OD6H8rzoStFILs",
+    google: "tTxIJ_79lYaGcLNHf1t5jQ2Zz5xuAAfmbpQHj_eKMlk",
   },
   title: "SynapCare Rehabilitation Center Pune | Speech Neuro Pediatric Rehab",
 
