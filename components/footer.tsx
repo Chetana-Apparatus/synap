@@ -164,8 +164,11 @@ const [showArrow, setShowArrow] = useState(false)
               <li>Language Therapy</li>
 
               <li>Swallowing Therapy</li>
-
               <li>Cognitive Rehabilitation</li>
+              <li>Physiotherapy</li>
+              <li>Auditory Verbal Therapy & Auditory Training</li>
+              <li>Psychology & Behavioural Services</li>
+
 
             </ul>
 
