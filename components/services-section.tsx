@@ -23,6 +23,7 @@ import {
   Hand,
   HeartPulse,
   Apple,
+  Ear
 } from "lucide-react"
 
 /* -------- SERVICES DATA -------- */
@@ -70,8 +71,33 @@ const services = [
     description:
       "Our physiotherapy programs are designed to enhance movement, strength, balance, and overall physical independence. We will provide support for children, adults, and individuals with neurological conditions, helping each person recover and regain mobility at every stage of life.Our evidence-based approach focuses on functional outcomes, personalized exercise plans, and ongoing guidance for families and caregivers. Whether it’s improving mobility after injury, supporting developmental needs in children, or maintaining independence in adults, physiotherapy at SynapCare aims to restore confidence and physical capability. ",
     image: "/physiotherapy.jpg",
-    status: "coming",
+    status: "active",
     alt: "Physiotherapy session at SynapCare Rehabilitation Center in Aundh Pune"
+  },
+{
+  icon: Ear,
+  title: "Auditory Verbal Therapy & Auditory Training",
+  description:
+    "At SynapCare Rehabilitation Center, we offer Auditory Verbal Therapy (AVT) and Auditory Training (AT) for children and adults with hearing loss. These therapies help individuals develop better listening and spoken communication skills.\n\n" +
+    "We work with people using hearing aids and cochlear implants, focusing on helping the brain understand sounds, speech, and language more effectively. Our sessions aim to improve sound awareness, speech clarity, listening skills, and everyday communication.\n\n" +
+   "Who is this for?\n" +
+"• Children with hearing loss\n" +
+"• Cochlear implant and hearing aid users\n" +
+"• Individuals with auditory processing difficulties\n" +
+"• Children getting ready for mainstream schooling\n\n" +
+"At SynapCare, we involve families in the therapy process to support early intervention, steady progress, and long-term communication outcomes.",
+  image: "/Auditory Verbal Therapy.jpg",
+  status: "active",
+  alt: "Auditory Verbal Therapy session at SynapCare Rehabilitation Center in Aundh Pune"
+},
+ {
+    icon: HeartPulse,
+    title: "Psychology & Behavioural Services",
+    description:
+      "Our psychology and behavioural services are designed to support emotional well-being and mental health for children and adults. We provide counseling, psychological assessments, and behavior therapy to help individuals manage emotions, cope with stress, and overcome everyday challengesOur approach combines evidence-based strategies with compassionate guidance, empowering clients to build resilience, improve coping skills, and enhance overall quality of life. By integrating emotional and behavioural support with other rehabilitation services, we aim for holistic care that addresses both mind and body.",
+    image: "/psychology-therapy.jpg",
+    status: "active",
+    alt: "Psychology and behavioral therapy session at SynapCare Rehabilitation Center in Aundh Pune"
   },
   {
     icon: Hand,
@@ -82,15 +108,7 @@ const services = [
     status: "coming",
     alt: "Occupational therapy session at SynapCare Rehabilitation Center in Aundh Pune"
   },
-  {
-    icon: HeartPulse,
-    title: "Psychology & Behavioural Services",
-    description:
-      "Our psychology and behavioural services are designed to support emotional well-being and mental health for children and adults. We provide counseling, psychological assessments, and behavior therapy to help individuals manage emotions, cope with stress, and overcome everyday challengesOur approach combines evidence-based strategies with compassionate guidance, empowering clients to build resilience, improve coping skills, and enhance overall quality of life. By integrating emotional and behavioural support with other rehabilitation services, we aim for holistic care that addresses both mind and body.",
-    image: "/psychology-therapy.jpg",
-    status: "coming",
-    alt: "Psychology and behavioral therapy session at SynapCare Rehabilitation Center in Aundh Pune"
-  },
+ 
   {
     icon: Apple,
     title: "Diet & Nutrition Services",
@@ -133,7 +151,10 @@ export function ServicesSection() {
           </div>
 
           <h3 className="text-xl font-bold text-primary w-full border-b border-gray-300 pb-4 mb-4">{popHeading}</h3>
-          <p className="text-balance leading-8 letter overflow-y-auto">{popContent}</p>
+          <p className="leading-7 whitespace-pre-line overflow-y-auto">
+  {popContent}
+</p>
+
 
 
 
@@ -290,7 +311,7 @@ export function ServicesSection() {
 
 
                         <p
-                          className={`text-sm lg:text-sm leading-relaxed line-clamp-3
+                          className={`text-sm lg:text-sm leading-relaxed line-clamp-3 whitespace-pre-line
                           ${service.status === "coming"
                               ? "text-black"
                               : "text-black"
