@@ -1,33 +1,37 @@
 "use client"
 
-import { useState, useEffect,useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
 export function Header() {
+  const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activeLink, setActiveLink] = useState("#home")
+  const [activeLink, setActiveLink] = useState("/#home")
 
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#services", label: "Services" },
-    { href: "#approach", label: "Our Approach" },
-    { href: "#founder", label: "Founder" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#home", label: "Home" },
+    { href: "/#about", label: "About" },
+    { href: "/#services", label: "Services" },
+    { href: "/#approach", label: "Our Approach" },
+    { href: "/#founder", label: "Founder" },
+    { href: "/blog", label: "Blog" },
+    { href: "/#contact", label: "Contact" },
+
   ]
-const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
- 
-  
-    // const handleScroll = () => {
-    //   setIsScrolled(window.scrollY > 10);
-    // };
-  
+
+
+  // const handleScroll = () => {
+  //   setIsScrolled(window.scrollY > 10);
+  // };
+
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : ""
     return () => {
@@ -37,22 +41,23 @@ const [menuOpen, setMenuOpen] = useState(false);
 
   // Handle smooth scroll with header offset
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("#")) {
+    if (href.includes("#") && pathname === "/") {
+      const hash = href.substring(href.indexOf("#"))
       e.preventDefault()
       setIsMobileMenuOpen(false)
-      
+
       // Wait for menu to close before scrolling
       setTimeout(() => {
         // Special handling for home - scroll to top
-        if (href === "#home") {
+        if (hash === "#home") {
           window.scrollTo({
             top: 0,
             behavior: "smooth"
           })
           return
         }
-        
-        const element = document.querySelector(href) as HTMLElement
+
+        const element = document.querySelector(hash) as HTMLElement
         if (element) {
           const headerHeight = 80 // Fixed header height
           const isMobile = window.innerWidth < 1024 // lg breakpoint
@@ -66,16 +71,25 @@ const [menuOpen, setMenuOpen] = useState(false);
           })
         }
       }, 100)
+    } else {
+      // Normal navigation for non-hash links or when not on home page
+      setIsMobileMenuOpen(false)
     }
   }
 
-  
+
   useEffect(() => {
     const updateActiveLink = () => {
       const scrollPosition = window.scrollY + 150
 
+      // If we're not on the home page, the active link should be the pathname
+      if (pathname !== "/") {
+        setActiveLink(pathname)
+        return
+      }
+
       if (scrollPosition < 200) {
-        setActiveLink("#home")
+        setActiveLink("/#home")
         return
       }
 
@@ -87,7 +101,7 @@ const [menuOpen, setMenuOpen] = useState(false);
           const top = el.offsetTop
           const bottom = top + el.offsetHeight
           if (scrollPosition >= top && scrollPosition < bottom) {
-            setActiveLink(`#${id}`)
+            setActiveLink(`/#${id}`)
             return
           }
         }
@@ -98,21 +112,21 @@ const [menuOpen, setMenuOpen] = useState(false);
     updateActiveLink()
 
     return () => window.removeEventListener("scroll", updateActiveLink)
-  }, [])
+  }, [pathname])
 
   return (
     <>
-      
+
       <header
-      className={`fixed top-0 left-0 w-full z-50 px-0 transition-all duration-300
+        className={`fixed top-0 left-0 w-full z-50 px-0 transition-all duration-300
         bg-white/60 shadow-[0_0_30px_rgba(0,0,0,0.2)] border-b border-[rgba(150,150,149,0.6)] py-0 backdrop-blur-md
         lg:bg-white lg:shadow-none lg:backdrop-blur-none lg:border-0 lg:py-4
       `}>
-    
+
         <div className="mx-auto px-4 lg:px-4">
           <div className="flex items-center justify-between h-20 lg:h-15">
-           
-            <Link href="#home" className="flex items-center gap-2">
+
+            <Link href="/" className="flex items-center gap-2" onClick={(e) => handleLinkClick(e, "/#home")}>
               <Image
                 src="/images/Logo1.webp"
                 alt="SynapCare Rehabilitation Center"
@@ -130,10 +144,9 @@ const [menuOpen, setMenuOpen] = useState(false);
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
                   className={`relative font-medium transition-colors
-                    ${
-                      activeLink === link.href
-                        ? "text-primary"
-                        : "text-foreground hover:text-primary"
+                    ${activeLink === link.href
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary"
                     }
                   `}
                 >
@@ -145,7 +158,7 @@ const [menuOpen, setMenuOpen] = useState(false);
               ))}
             </nav>
 
-            
+
             <div className="hidden lg:flex items-center gap-4">
               <Button
                 asChild
@@ -182,8 +195,6 @@ const [menuOpen, setMenuOpen] = useState(false);
           </div>
         </div>
       </header>
-
-    /
       {isMobileMenuOpen && (
         <div
           className="
@@ -198,7 +209,7 @@ const [menuOpen, setMenuOpen] = useState(false);
           <div className="flex items-center justify-between h-20 px-0 border-b">
             {/* SAME LOGO SIZE */}
             <Image
-              src="/images/Logo 1.webp"
+              src="/images/Logo1.webp"
               alt="SynapCare Rehabilitation Center"
               width={280}
               height={60}
@@ -218,10 +229,9 @@ const [menuOpen, setMenuOpen] = useState(false);
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
                 className={`py-4 px-4 rounded-xl text-lg font-medium transition-all
-                  ${
-                    activeLink === link.href
-                      ? "bg-muted text-primary"
-                      : "text-foreground hover:bg-muted"
+                  ${activeLink === link.href
+                    ? "bg-muted text-primary"
+                    : "text-foreground hover:bg-muted"
                   }
                 `}
               >

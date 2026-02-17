@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 
 
 export function Footer() {
-const [showArrow, setShowArrow] = useState(false)
+  const [showArrow, setShowArrow] = useState(false)
 
 
 
@@ -15,7 +15,7 @@ const [showArrow, setShowArrow] = useState(false)
 
     const handleScroll = () => {
 
-      
+
 
       if (window.scrollY > window.innerHeight) {
 
@@ -63,18 +63,18 @@ const [showArrow, setShowArrow] = useState(false)
 
 
 
-          
+
 
           <div className="md:col-span-2 flex flex-col items-start gap-4 leading-none ">
             <div className="relative w-[250px] h-[100px]">
-  <Image
-    src="/images/logo4.webp"
-    alt="SynapCare"
-    fill
-    className="object-contain "
-    priority
-  />
-</div>
+              <Image
+                src="/images/logo4.webp"
+                alt="SynapCare"
+                fill
+                className="object-contain "
+                priority
+              />
+            </div>
 
 
 
@@ -83,7 +83,7 @@ const [showArrow, setShowArrow] = useState(false)
             </p>
 
 
-           
+
             <div className="flex items-center gap-4">
               <Link
                 href="https://www.facebook.com/SynapCareRehab/"
@@ -117,7 +117,7 @@ const [showArrow, setShowArrow] = useState(false)
 
 
 
-          
+
 
           <div>
 
@@ -131,7 +131,7 @@ const [showArrow, setShowArrow] = useState(false)
 
                   <Link
 
-                    href={`#${item}`}
+                    href={`/#${item}`}
 
                     className="text-white/70 hover:text-white transition-colors"
 

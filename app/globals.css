@@ -226,3 +226,69 @@ body {
   border: 1.5px solid rgba(255, 255, 255, 0.85); /* ✅ active border */
   box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
 }
+
+/* Blog Content Styles for Rich Text */
+.blog-content {
+  line-height: 1.8;
+}
+
+.blog-content b, 
+.blog-content strong {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.blog-content i, 
+.blog-content em {
+  font-style: italic;
+}
+
+.blog-content h1, 
+.blog-content h2, 
+.blog-content h3, 
+.blog-content h4 {
+  color: var(--primary);
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content h1 { font-size: 2.25rem; }
+.blog-content h2 { font-size: 1.875rem; }
+.blog-content h3 { font-size: 1.5rem; }
+
+.blog-content ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content ol {
+  list-style-type: decimal;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-content p {
+  margin-bottom: 1.25rem;
+}
+
+.blog-content blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 1.5rem 0;
+  color: var(--muted-foreground);
+}
+
+.blog-content img {
+  border-radius: var(--radius-lg);
+  margin: 2rem auto;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
