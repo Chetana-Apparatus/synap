@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { blogApi, categoryApi, getImageUrl } from '@/lib/api';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
@@ -32,13 +33,13 @@ export default async function BlogListPage(props: BlogListPageProps) {
     const searchQuery = (searchParams?.search as string)?.toLowerCase() || "";
 
     try {
-        // Fetch categories for the filter UI
+
         const catRes = await categoryApi.getAll(1, 100);
         if (catRes) {
             categories = catRes.categories || catRes.data || [];
         }
 
-        // Fetch ALL blogs and filter locally to ensure consistency
+
         const blogRes = await blogApi.getAll(1, 1000);
 
         if (blogRes) {
@@ -58,13 +59,18 @@ export default async function BlogListPage(props: BlogListPageProps) {
                 }
             }
 
-            // Apply Filters (Category & Search)
+            // Redirect to home if no blogs are found at all (all deleted)
+            if (rawBlogs.length === 0) {
+                redirect('/');
+            }
+
+
             if (rawBlogs.length > 0) {
                 rawBlogs = rawBlogs.filter((b: any) => {
-                    // Category Filter
+
                     const matchesCategory = !categoryId || b.categoryId === categoryId || b.category?.id === categoryId;
 
-                    // Search Filter
+
                     const matchesSearch = !searchQuery ||
                         b.title?.toLowerCase().includes(searchQuery) ||
                         b.shortDescription?.toLowerCase().includes(searchQuery);
@@ -101,7 +107,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
                         </p>
                     </div>
 
-                    {/* Search & Category Filter */}
+
                     <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto mb-16 items-start">
                         <div className="flex-grow w-full">
                             <BlogSearch />
@@ -111,20 +117,20 @@ export default async function BlogListPage(props: BlogListPageProps) {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className={blogs.length === 1 ? "flex justify-center" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"}>
                         {blogs.length > 0 ? (
                             blogs.map((blog) => (
                                 <Link
-                                    // Using ID for link since API doesn't return slug
                                     href={`/blog/${blog.id}`}
                                     key={blog.id}
-                                    className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-primary/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                                    className={`group flex flex-col bg-white rounded-2xl overflow-hidden border border-primary/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${blogs.length === 1 ? 'max-w-md w-full' : ''}`}
                                 >
                                     <div className="relative h-56 overflow-hidden">
                                         <img
-                                            src={blog.image ? getImageUrl(blog.image) : "/images/Placeholder%20image.png"}
+                                            src={blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg"}
                                             alt={blog.title}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+
                                         />
                                     </div>
 

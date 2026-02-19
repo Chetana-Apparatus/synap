@@ -1,37 +1,28 @@
-// ================================
-// API BASE URL
-// ================================
+
 export const API_BASE_URL =
-    process.env.NEXT_PUBLIC_API_BASE_URL || "http://192.168.1.173:5000";
+    process.env.NEXT_PUBLIC_API_BASE_URL || "https://scb.aspune.cloud";
 
 const isBrowser = typeof window !== "undefined";
-
-/**
- * Robust image URL generator that handles both absolute and relative paths.
- * Prepends the backend base URL to relative paths if needed.
- */
 export const getImageUrl = (path: string | null | undefined) => {
     if (!path) return '';
 
-    // Normalize slashes (handles Windows-style backend paths)
+
     let cleanPath = path.replace(/\\/g, '/');
 
-    // If it's already an absolute URL or a data URI, return as-is
+
     if (cleanPath.startsWith('http') || cleanPath.startsWith('data:')) return cleanPath;
 
-    // Ensure leading slash for consistency
+
     if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
 
-    // Prepend the backend base URL for all relative paths
+
     return `${API_BASE_URL}${cleanPath}`;
 };
 
 
-// =======================================================
-// AUTH API
-// =======================================================
+
 export const authApi = {
-    // LOGIN
+
     async login(email: string, password: string) {
         try {
             const response = await fetch(`${API_BASE_URL}/api/auth/login`, {

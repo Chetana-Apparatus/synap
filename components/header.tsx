@@ -18,7 +18,7 @@ export function Header() {
     { href: "/#services", label: "Services" },
     { href: "/#approach", label: "Our Approach" },
     { href: "/#founder", label: "Founder" },
-    { href: "/", label: "Blog" },
+    { href: "/blog", label: "Blog" },
     { href: "/#contact", label: "Contact" },
 
   ]

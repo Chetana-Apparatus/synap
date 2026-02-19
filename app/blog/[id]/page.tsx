@@ -5,6 +5,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Calendar, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import Image from "next/image";
 
 interface BlogPageProps {
     params: {
@@ -102,7 +103,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
 
                     <div className="relative w-full aspect-video rounded-3xl overflow-hidden mb-12 shadow-lg bg-muted">
                         <img
-                            src={blog.image ? getImageUrl(blog.image) : "/images/Placeholder%20image.png"}
+                            src={blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg"}
                             alt={blog.title}
                             className="w-full h-full object-cover"
                         />
