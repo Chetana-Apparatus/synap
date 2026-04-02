@@ -10,10 +10,10 @@ import { Menu, X } from "lucide-react"
 export function Header() {
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activeLink, setActiveLink] = useState("/#home")
+  const [activeLink, setActiveLink] = useState("")
 
   const navLinks = [
-    { href: "/#home", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "/#about", label: "About" },
     { href: "/#services", label: "Services" },
     { href: "/#approach", label: "Our Approach" },
@@ -44,6 +44,8 @@ export function Header() {
     if (href.includes("#") && pathname === "/") {
       const hash = href.substring(href.indexOf("#"))
       e.preventDefault()
+      // Update URL hash without jumping
+      window.history.pushState(null, '', hash)
       setIsMobileMenuOpen(false)
 
       // Wait for menu to close before scrolling

@@ -129,20 +129,24 @@
   --animate-float-slow: float-slow 8s ease-in-out infinite;
 
   @keyframes float {
+
     0%,
     100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-20px);
     }
   }
 
   @keyframes float-slow {
+
     0%,
     100% {
       transform: translateY(0px) translateX(0px);
     }
+
     50% {
       transform: translateY(-15px) translateX(10px);
     }
@@ -153,19 +157,22 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 
   /* Scroll offset for fixed header - ensures section headings are visible when navigating */
   section[id] {
-    scroll-margin-top: 80px; /* Fixed header height (80px) - no extra spacing for cleaner mobile view */
+    scroll-margin-top: 80px;
+    /* Fixed header height (80px) - no extra spacing for cleaner mobile view */
   }
-  
+
   /* Add extra spacing only on desktop */
   @media (min-width: 1024px) {
     section[id] {
-      scroll-margin-top: 100px; /* Fixed header height (80px) + extra spacing (20px) for desktop */
+      scroll-margin-top: 100px;
+      /* Fixed header height (80px) + extra spacing (20px) for desktop */
     }
   }
 
@@ -182,6 +189,7 @@
     @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 rounded-lg font-medium transition-all duration-300;
   }
 }
+
 /* html, body {
   overflow-x: hidden;
 } */
@@ -190,6 +198,7 @@ body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
 /* Services pagination — SAME as Hero pagination */
 /* ===== Services Swiper Pagination (Hero-style with border) ===== */
 
@@ -206,7 +215,8 @@ body {
   height: 0.75rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.5);
-  border: 1.5px solid rgba(99, 102, 241, 0.45); /* ✅ border added */
+  border: 1.5px solid rgba(99, 102, 241, 0.45);
+  /* ✅ border added */
   opacity: 1;
   transition: all 0.3s ease;
 }
@@ -218,12 +228,11 @@ body {
 
 /* Active dot */
 .services-pagination .swiper-pagination-bullet-active {
-  background: linear-gradient(
-    to right,
-    var(--primary),
-    var(--secondary)
-  );
-  border: 1.5px solid rgba(255, 255, 255, 0.85); /* ✅ active border */
+  background: linear-gradient(to right,
+      var(--primary),
+      var(--secondary));
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  /* ✅ active border */
   box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
 }
 
@@ -232,20 +241,20 @@ body {
   line-height: 1.8;
 }
 
-.blog-content b, 
+.blog-content b,
 .blog-content strong {
   font-weight: 700;
   color: var(--primary);
 }
 
-.blog-content i, 
+.blog-content i,
 .blog-content em {
   font-style: italic;
 }
 
-.blog-content h1, 
-.blog-content h2, 
-.blog-content h3, 
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
 .blog-content h4 {
   color: var(--primary);
   font-weight: 800;
@@ -253,9 +262,17 @@ body {
   margin-bottom: 1rem;
 }
 
-.blog-content h1 { font-size: 2.25rem; }
-.blog-content h2 { font-size: 1.875rem; }
-.blog-content h3 { font-size: 1.5rem; }
+.blog-content h1 {
+  font-size: 2.25rem;
+}
+
+.blog-content h2 {
+  font-size: 1.875rem;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+}
 
 .blog-content ul {
   list-style-type: disc;

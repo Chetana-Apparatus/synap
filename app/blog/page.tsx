@@ -127,7 +127,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
                                 >
                                     <div className="relative h-56 overflow-hidden">
                                         <img
-                                            src={blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg"}
+                                            src={blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy" ? "/images/Blog2.jpeg" : (blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg")}
                                             alt={blog.title}
                                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
 

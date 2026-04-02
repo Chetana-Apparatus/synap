@@ -65,15 +65,15 @@ export function ContactSection() {
   }
 
   return (
-   <section
-  id="contact"
-  className="
+    <section
+      id="contact"
+      className="
    pt-10 pb-10 lg:pt-14 lg:pb-14
     bg-white
     scroll-mt-20
     overflow-x-hidden
   "
->
+    >
 
 
       <div className="container mx-auto px-4">
@@ -82,7 +82,7 @@ export function ContactSection() {
             Start Your Journey with SynapCare
           </h2>
           <p className="text-xl text-black max-w-2xl mx-auto text-pretty">
-            Your path to recovery and independence begins with a conversation. Reach out to us today and let our compassionate team guide you or your loved one with personalized, evidence-based care. 
+            Your path to recovery and independence begins with a conversation. Reach out to us today and let our compassionate team guide you or your loved one with personalized, evidence-based care.
           </p>
         </div>
 
@@ -148,16 +148,16 @@ export function ContactSection() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={6}
-className="w-full min-h-[180px] resize-none overflow-auto"
+                  className="w-full min-h-[180px] resize-none overflow-auto"
 
                 />
                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
 
               <Button
-  type="submit"
-  disabled={isSubmitting}
-  className="
+                type="submit"
+                disabled={isSubmitting}
+                className="
     group relative overflow-hidden w-full rounded-full
     bg-gradient-to-r from-primary to-secondary
     text-white font-semibold
@@ -169,10 +169,10 @@ className="w-full min-h-[180px] resize-none overflow-auto"
     hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
     disabled:opacity-60 disabled:cursor-not-allowed
   "
->
-  {isSubmitting ? "Sending..." : "Send Message"}
-  <span
-    className="
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+                <span
+                  className="
       pointer-events-none
       absolute -top-[150%] left-0
       w-[300%] h-[6px]
@@ -184,8 +184,8 @@ className="w-full min-h-[180px] resize-none overflow-auto"
       group-hover:top-[150%]
       group-hover:opacity-100
     "
-  />
-</Button>
+                />
+              </Button>
 
             </form>
           </div>
@@ -197,51 +197,51 @@ className="w-full min-h-[180px] resize-none overflow-auto"
               <h3 className="text-2xl font-bold mb-6 text-foreground">Get in Touch</h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-  <a
-    href="mailto:synapcare1510@gmail.com"
-    className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0
+                  <a
+                    href="mailto:synapcare1510@gmail.com"
+                    className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0
                hover:bg-primary/20 transition"
-    aria-label="Email SynapCare"
-  >
-    <Mail className="w-6 h-6 text-primary" />
-  </a>
+                    aria-label="Email SynapCare"
+                  >
+                    <Mail className="w-6 h-6 text-primary" />
+                  </a>
 
-  <div>
-    <h4 className="font-semibold mb-1">Email</h4>
-    <a
-      href="mailto:synapcare1510@gmail.com"
-      className="text-black hover:text-primary transition"
-    >
-      synapcare1510@gmail.com
-    </a>
-  </div>
-</div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Email</h4>
+                    <a
+                      href="mailto:synapcare1510@gmail.com"
+                      className="text-black hover:text-primary transition"
+                    >
+                      synapcare1510@gmail.com
+                    </a>
+                  </div>
+                </div>
 
                 <div className="flex items-start gap-4">
-  <a
-    href="tel:+917387770918"
-    className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center shrink-0
+                  <a
+                    href="tel:+917387770918"
+                    className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center shrink-0
                hover:bg-secondary/20 transition"
-    aria-label="Call SynapCare"
-  >
-    <Phone className="w-6 h-6 text-secondary" />
-  </a>
+                    aria-label="Call SynapCare"
+                  >
+                    <Phone className="w-6 h-6 text-secondary" />
+                  </a>
 
-  <div>
-    <h4 className="font-semibold mb-1">Phone</h4>
-    <div className="flex flex-col gap-1 text-black">
-      <a href="tel:+917387770918" className="hover:text-primary transition">
-        +91 73877 70918
-      </a>
-      <a href="tel:+917709370918" className="hover:text-primary transition">
-        +91 77093 70918
-      </a>
-    </div>
-  </div>
-</div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Phone</h4>
+                    <div className="flex flex-col gap-1 text-black">
+                      <a href="tel:+917387770918" className="hover:text-primary transition">
+                        +91 73877 70918
+                      </a>
+                      <a href="tel:+917709370918" className="hover:text-primary transition">
+                        +91 77093 70918
+                      </a>
+                    </div>
+                  </div>
+                </div>
 
 
- 
+
                 {/* <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center shrink-0">
                     <Mail className="w-6 h-6 text-secondary" />
@@ -251,87 +251,87 @@ className="w-full min-h-[180px] resize-none overflow-auto"
                     <p className="text-black">synapcare1510@gmail.com</p>
                   </div>
                 </div> */}
- 
-                <div className="flex items-start gap-4">
-  <a
-    href="https://www.google.com/maps?q=Asha+Apartment,+Sahil+Park,+Sanewadi,+Aundh,+Pune,+Maharashtra+411067"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-12 h-12 bg-accent/50 rounded-full flex items-center justify-center shrink-0
-               hover:bg-accent/70 transition"
-    aria-label="Open location in Google Maps"
-  >
-    <MapPin className="w-6 h-6 text-primary" />
-  </a>
 
-  <div>
-    <h4 className="font-semibold mb-1">Location</h4>
-    <a
-      href="https://www.google.com/maps?q=Asha+Apartment,+Sahil+Park,+Sanewadi,+Aundh,+Pune,+Maharashtra+411067"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-black hover:text-primary transition"
-    >
-      Asha Apartment, Sanewadi, Aundh, Pune, Maharashtra 411067
-    </a>
-  </div>
-</div>
+                <div className="flex items-start gap-4">
+                  <a
+                    href="https://www.google.com/maps?q=Asha+Apartment,+Sahil+Park,+Sanewadi,+Aundh,+Pune,+Maharashtra+411067"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-accent/50 rounded-full flex items-center justify-center shrink-0
+               hover:bg-accent/70 transition"
+                    aria-label="Open location in Google Maps"
+                  >
+                    <MapPin className="w-6 h-6 text-primary" />
+                  </a>
+
+                  <div>
+                    <h4 className="font-semibold mb-1">Location</h4>
+                    <a
+                      href="https://www.google.com/maps?q=Asha+Apartment,+Sahil+Park,+Sanewadi,+Aundh,+Pune,+Maharashtra+411067"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-black hover:text-primary transition"
+                    >
+                      Asha Apartment, Sanewadi, Aundh, Pune, Maharashtra 411067
+                    </a>
+                  </div>
+                </div>
 
               </div>
             </div>
- 
-<div className="bg-linear-to-br from-primary to-secondary rounded-2xl p-6 sm:p-7 text-white shadow-lg">
-  <h3 className="text-xl sm:text-2xl font-bold mb-5">
-    Office Hours
-  </h3>
 
-  <div className="space-y-3 text-sm sm:text-base">
-    {/* Monday */}
-    <div className="flex items-center justify-between">
-      <span className="font-medium text-white/85">Monday</span>
-      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
-    </div>
+            <div className="bg-linear-to-br from-primary to-secondary rounded-2xl p-6 sm:p-7 text-white shadow-lg">
+              <h3 className="text-xl sm:text-2xl font-bold mb-5">
+                Clinic Hours
+              </h3>
 
-    {/* Tuesday */}
-    <div className="flex items-center justify-between">
-      <span className="font-medium text-white/85">Tuesday</span>
-      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
-    </div>
+              <div className="space-y-3 text-sm sm:text-base">
+                {/* Monday */}
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-white/85">Monday</span>
+                  <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+                </div>
 
-    {/* Wednesday */}
-    <div className="flex items-center justify-between">
-      <span className="font-medium text-white/85">Wednesday</span>
-      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
-    </div>
+                {/* Tuesday */}
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-white/85">Tuesday</span>
+                  <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+                </div>
 
-    {/* Thursday */}
-    <div className="flex items-center justify-between">
-      <span className="font-medium text-white/85">Thursday</span>
-      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
-    </div>
+                {/* Wednesday */}
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-white/85">Wednesday</span>
+                  <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+                </div>
 
-    {/* Friday */}
-    <div className="flex items-center justify-between">
-      <span className="font-medium text-white/85">Friday</span>
-      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
-    </div>
+                {/* Thursday */}
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-white/85">Thursday</span>
+                  <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+                </div>
 
-    {/* Saturday */}
-    <div className="flex items-center justify-between">
-      <span className="font-medium text-white/85">Saturday</span>
-      <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
-    </div>
+                {/* Friday */}
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-white/85">Friday</span>
+                  <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+                </div>
 
-    {/* Divider */}
-    <div className="h-px bg-white/20 my-2" />
+                {/* Saturday */}
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-white/85">Saturday</span>
+                  <span className="font-semibold text-white">10:00 AM – 8:00 PM</span>
+                </div>
 
-    {/* Sunday */}
-    <div className="flex items-center justify-between">
-      <span className="font-medium text-white/70">Sunday</span>
-      <span className="font-semibold text-white/60">Closed</span>
-    </div>
-  </div>
-</div>
+                {/* Divider */}
+                <div className="h-px bg-white/20 my-2" />
+
+                {/* Sunday */}
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-white/70">Sunday</span>
+                  <span className="font-semibold text-white/60">Closed</span>
+                </div>
+              </div>
+            </div>
 
 
 
