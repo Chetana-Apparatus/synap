@@ -93,6 +93,16 @@ export default async function BlogListPage(props: BlogListPageProps) {
         return categories.find(c => c.id === id)?.name;
     };
 
+    const getBlogLink = (blog: any) => {
+        if (blog.id === 2 || blog.id === "2") {
+            return "/blog/rehabilitation-journey-multidisciplinary-care-aundh-pune";
+        }
+        if (blog.id === 3 || blog.id === "3") {
+            return "/blog/life-after-stroke-recovery-beyond-therapy-pune";
+        }
+        return `/blog/${blog.id}`;
+    };
+
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -121,7 +131,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
                         {blogs.length > 0 ? (
                             blogs.map((blog) => (
                                 <Link
-                                    href={`/blog/${blog.id}`}
+                                    href={getBlogLink(blog)}
                                     key={blog.id}
                                     className={`group flex flex-col bg-white rounded-2xl overflow-hidden border border-primary/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${blogs.length === 1 ? 'max-w-md w-full' : ''}`}
                                 >

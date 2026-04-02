@@ -8,9 +8,9 @@ import Link from 'next/link';
 import Image from "next/image";
 
 interface BlogPageProps {
-    params: {
+    params: Promise<{
         id: string; // Dynamic route parameter
-    };
+    }>;
 }
 
 // Disable caching to ensure fresh data
@@ -19,8 +19,17 @@ export const dynamic = 'force-dynamic';
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
     const { id } = await params;
 
+    // Map slug to ID if necessary
+    let blogId = id;
+    if (id === "rehabilitation-journey-multidisciplinary-care-aundh-pune") {
+        blogId = "2";
+    }
+    if (id === "life-after-stroke-recovery-beyond-therapy-pune") {
+        blogId = "3";
+    }
+
     try {
-        const response = await blogApi.getById(parseInt(id));
+        const response = await blogApi.getById(parseInt(blogId));
         const blog = response.blog || response.data || response;
 
         if (!blog || !blog.title) {
@@ -49,10 +58,20 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
     const { id } = await params;
+
+    // Map slug to ID if necessary
+    let blogId = id;
+    if (id === "rehabilitation-journey-multidisciplinary-care-aundh-pune") {
+        blogId = "2";
+    }
+    if (id === "life-after-stroke-recovery-beyond-therapy-pune") {
+        blogId = "3";
+    }
+
     let blog = null;
 
     try {
-        const response = await blogApi.getById(parseInt(id));
+        const response = await blogApi.getById(parseInt(blogId));
         // console.log("Blog API Response:", response); // Uncomment for debugging
 
         if (response) {
