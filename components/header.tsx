@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
+import { ServicesDropdownSimple } from "@/components/services-dropdown-simple"
 import { Menu, X } from "lucide-react"
 
 export function Header() {
@@ -140,24 +141,32 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`relative font-medium transition-colors
-                    ${activeLink === link.href
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
-                    }
-                  `}
-                >
-                  {link.label}
-                  {activeLink === link.href && (
-                    <span className="absolute -bottom-2 left-0 h-[2px] w-full bg-primary rounded-full" />
-                  )}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                if (link.label === "Services") {
+                  return (
+                    <ServicesDropdownSimple key="services-dropdown" />
+                  )
+                }
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className={`relative font-medium transition-colors
+                      ${activeLink === link.href
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary"
+                      }
+                    `}
+                  >
+                    {link.label}
+                    {activeLink === link.href && (
+                      <span className="absolute -bottom-2 left-0 h-[2px] w-full bg-primary rounded-full" />
+                    )}
+                  </Link>
+                )
+              })}
             </nav>
 
 

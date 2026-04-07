@@ -53,7 +53,7 @@ export const services: Service[] = [
             "Fluency (Stammering) Management",
             " Voice Therapy & Vocal Hygiene",
             "Motor Speech Rehabilitation (Apraxia/Dysarthria)",
-            "Accent & Speech Clarity Training"
+        
         ],
 
     },
@@ -72,10 +72,8 @@ export const services: Service[] = [
             description: "Our approach targets receptive and expressive language therapy, including vocabulary development, sentence structure, and conversational skills. We customise therapy for each person, regardless of age, to make sure that they can communicate better.We stress the importance of developing real-world communication skills that make it easier to participate in school, social, and work settings."
         },
         specializedTreatments: [
-            "Receptive Language Training",
-            "Expressive Language Therapy",
+            "Receptive and Expressive language Therapy.",
             "Social Communication Skills",
-            "Pragmatic Language Therapy",
             " Language Intervention for Neurological Conditions"
 
         ],
@@ -139,7 +137,7 @@ export const services: Service[] = [
         deepDive: "Physical limitations, pain, or injury can restrict mobility and independence. Our physiotherapy services are designed to restore movement, strength, and overall physical function.",
         clinicalFocus: {
             title: "Functional Biomechanics",
-            description: "We conduct detailed physical assessments to identify biomechanical issues, muscle imbalances, and movement dysfunctions. Our therapy combines manual techniques, exercise programmes, and functional training.\n\nWe focus on long-term recovery, injury prevention, and improved physical performance."
+            description: "We conduct detailed physical assessments to identify biomechanical issues, muscle imbalances, movement dysfunctions and Neurodevelopmental assessment. Our therapy combines Neurological approaches, manual techniques, exercise programmes for balance, strength, gait training and functional training."
         },
         specializedTreatments: [
             "Neurological & Orthopedic Rehab",

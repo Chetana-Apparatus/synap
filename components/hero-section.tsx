@@ -124,9 +124,15 @@ export default function HeroSection() {
           
           <div className="relative z-10 flex h-full items-center justify-center px-4">
             <div className="max-w-4xl text-center">
-              <h1 className="mb-4 text-4xl lg:text-5xl lg:text-7xl font-bold text-white">
-                {slide.title}
-              </h1>
+              {currentSlide === 0 ? (
+                <h1 className="mb-4 text-4xl lg:text-5xl lg:text-7xl font-bold text-white">
+                  {slide.title}
+                </h1>
+              ) : (
+                <h2 className="mb-4 text-4xl lg:text-5xl lg:text-7xl font-bold text-white">
+                  {slide.title}
+                </h2>
+              )}
 
               <p className="mb-6 text-xl md:text-2xl font-medium text-primary-foreground/90">
                 {slide.subtitle}
