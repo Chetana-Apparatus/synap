@@ -11,7 +11,9 @@ const services = [
   { label: "Cognitive Rehabilitation", href: "/services/cognitive-rehabilitation" },
   { label: "Physiotherapy", href: "/services/physiotherapy" },
   { label: "Auditory Verbal Therapy & Auditory Training", href: "/services/auditory-verbal-therapy" },
-{ label: "Psychology & Behavioural Services", href: "/services/psychology-and-behavioural-services" },
+  { label: "Psychology & Behavioural Services", href: "/services/psychology-and-behavioural-services" },
+  { label: "Occupational Therapy", href: "/services/occupational-therapy", status: "coming" },
+  { label: "Diet & Nutrition Services", href: "/services/diet-and-nutrition-services", status: "coming" },
 ]
 
 export function ServicesDropdownSimple() {
@@ -59,7 +61,14 @@ export function ServicesDropdownSimple() {
               role="menuitem"
             >
               <Circle className="h-2.5 w-2.5 text-[#013927] transition duration-200 group-hover:text-[#FFD700]" />
-              <span>{service.label}</span>
+              <div className="flex flex-1 items-center justify-between gap-3">
+                <span>{service.label}</span>
+                {service.status === "coming" && (
+                  <span className="rounded-full bg-[#013927]/10 text-[#013927] px-2 py-0.5 text-[8px] font-semibold uppercase tracking-[0.18em] whitespace-nowrap">
+                    Coming Soon
+                  </span>
+                )}
+              </div>
             </Link>
           ))}
         </div>
