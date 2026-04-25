@@ -57,18 +57,18 @@ export function ServicesDropdownSimple() {
             <Link
               key={service.href}
               href={service.href}
-              className="group flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-[#013927] transition duration-200 hover:bg-[#013927]/10 hover:text-[#013927] hover:translate-x-1"
+              className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-start gap-3 rounded-xl px-4 py-3 text-sm text-[#013927] transition duration-200 hover:bg-[#013927]/10 hover:text-[#013927] hover:translate-x-1"
               role="menuitem"
             >
-              <Circle className="h-2.5 w-2.5 text-[#013927] transition duration-200 group-hover:text-[#FFD700]" />
-              <div className="flex flex-1 items-center justify-between gap-3">
-                <span>{service.label}</span>
-                {service.status === "coming" && (
-                  <span className="rounded-full bg-[#013927]/10 text-[#013927] px-2 py-0.5 text-[8px] font-semibold uppercase tracking-[0.18em] whitespace-nowrap">
-                    Coming Soon
-                  </span>
-                )}
-              </div>
+              <Circle className="mt-1 h-2.5 w-2.5 text-[#013927] transition duration-200 group-hover:text-[#FFD700]" />
+              <span className="block min-w-0 leading-tight">
+                {service.label}
+              </span>
+              {service.status === "coming" && (
+                <span className="rounded-full bg-[#013927]/10 text-[#013927] px-2 py-0.5 text-[8px] font-semibold uppercase tracking-[0.18em] whitespace-nowrap">
+                  Coming Soon
+                </span>
+              )}
             </Link>
           ))}
         </div>
