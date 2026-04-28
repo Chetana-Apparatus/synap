@@ -87,6 +87,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
         notFound();
     }
 
+    const usesBlog3Image = blog.id === 4 || blog.id === "4";
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -122,7 +123,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
 
                     <div className="relative w-full aspect-video rounded-3xl overflow-hidden mb-12 shadow-lg bg-muted">
                         <img
-                            src={blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy" ? "/images/Blog2.jpeg" : (blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg")}
+                            src={usesBlog3Image ? "/images/Blog%203.jpeg" : (blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy" ? "/images/Blog2.jpeg" : (blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg"))}
                             alt={blog.title}
                             className="w-full h-full object-cover"
                         />

@@ -195,17 +195,25 @@ export const blogApi = {
         shortDescription: string;
         longDescription: string;
         categoryId: number;
-        image: File;
+        image?: File | null;
     }) {
         try {
             const token = isBrowser ? localStorage.getItem("admin_token") : null;
+
+            if (!token) {
+                throw new Error("Unauthorized: No authentication token found");
+            }
 
             const formData = new FormData();
             formData.append("title", blogData.title);
             formData.append("shortDescription", blogData.shortDescription);
             formData.append("longDescription", blogData.longDescription);
             formData.append("categoryId", blogData.categoryId.toString());
-            formData.append("image", blogData.image);
+
+            // Only append image if it exists
+            if (blogData.image) {
+                formData.append("image", blogData.image);
+            }
 
             const response = await fetch(`${API_BASE_URL}/api/blogs`, {
                 method: "POST",
@@ -232,6 +240,10 @@ export const blogApi = {
     async update(id: number, blogData: any) {
         try {
             const token = isBrowser ? localStorage.getItem("admin_token") : null;
+
+            if (!token) {
+                throw new Error("Unauthorized: No authentication token found");
+            }
 
             const formData = new FormData();
 

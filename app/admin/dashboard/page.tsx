@@ -144,12 +144,18 @@ export default function AdminDashboard() {
             if (isEditingBlog && currentBlogId) {
                 await blogApi.update(currentBlogId, submitData);
             } else {
-                if (!imageFile) throw new Error("Image required");
                 await blogApi.create({ ...submitData, image: imageFile });
             }
             setShowBlogForm(false);
             fetchData();
         } catch (error: any) {
+            console.error("Blog submit error:", error);
+            if (error.message.includes("Unauthorized")) {
+                alert("Your session has expired. Please log in again.");
+                authApi.logout();
+                router.push("/admin/login");
+                return;
+            }
             alert(error.message || "Failed to save blog");
         }
     };
