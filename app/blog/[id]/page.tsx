@@ -27,7 +27,9 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
     if (id === "life-after-stroke-recovery-beyond-therapy-pune") {
         blogId = "3";
     }
-
+    if (id === "autism-awareness-vs-acceptance-child-support-therapy") {
+        blogId = "4";
+    }
     try {
         const response = await blogApi.getById(parseInt(blogId));
         const blog = response.blog || response.data || response;
@@ -67,7 +69,9 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     if (id === "life-after-stroke-recovery-beyond-therapy-pune") {
         blogId = "3";
     }
-
+    if (id === "autism-awareness-vs-acceptance-child-support-therapy") {
+        blogId = "4";
+    }
     let blog = null;
 
     try {

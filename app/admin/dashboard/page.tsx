@@ -138,7 +138,7 @@ export default function AdminDashboard() {
                 shortDescription: blogFormData.shortDescription,
                 longDescription: blogFormData.longDescription,
                 categoryId: parseInt(blogFormData.categoryId),
-                image: imageFile || undefined
+                image: imageFile ?? imagePreview ?? undefined
             };
 
             if (isEditingBlog && currentBlogId) {

@@ -100,6 +100,9 @@ export default async function BlogListPage(props: BlogListPageProps) {
         if (blog.id === 3 || blog.id === "3") {
             return "/blog/life-after-stroke-recovery-beyond-therapy-pune";
         }
+        if (blog.id === 4 || blog.id === "4") {
+            return "/blog/autism-awareness-vs-acceptance-child-support-therapy";
+        }
         return `/blog/${blog.id}`;
     };
 

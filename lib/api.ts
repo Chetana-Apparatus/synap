@@ -264,6 +264,9 @@ export const blogApi = {
             if (blogData.image instanceof File) {
                 formData.append("image", blogData.image);
             }
+            if (typeof blogData.image === "string" && blogData.image.trim()) {
+                formData.append("image", blogData.image);
+            }
 
             const response = await fetch(`${API_BASE_URL}/api/blogs/${id}`, {
                 method: "PUT",
@@ -273,10 +276,22 @@ export const blogApi = {
                 body: formData,
             });
 
-            const data = await response.json();
+            let data: any = null;
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+                data = await response.json();
+            } else {
+                const text = await response.text();
+                data = { error: text || `Server returned ${response.status} ${response.statusText}` };
+            }
 
             if (!response.ok) {
-                throw new Error(data.message || "Update failed");
+                throw new Error(
+                    data?.message ||
+                    data?.error ||
+                    data?.details ||
+                    `Update failed (${response.status})`
+                );
             }
 
             return data;

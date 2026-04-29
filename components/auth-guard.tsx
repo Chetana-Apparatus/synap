@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { authApi } from '@/lib/api';
 
@@ -15,17 +15,21 @@ interface AuthGuardProps {
  */
 export function AuthGuard({ children }: AuthGuardProps) {
     const router = useRouter();
+    const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
-        // Check if user is authenticated
-        if (!authApi.isAuthenticated()) {
-            // Redirect to login
+        const authenticated = authApi.isAuthenticated();
+        setIsAuthenticated(authenticated);
+        setIsCheckingAuth(false);
+
+        if (!authenticated) {
             router.push('/admin/login');
         }
     }, [router]);
 
-    // If not authenticated, don't render children
-    if (!authApi.isAuthenticated()) {
+    // Keep initial markup stable across server and client.
+    if (isCheckingAuth || !isAuthenticated) {
         return (
             <div className="flex min-h-screen items-center justify-center">
                 <div className="text-center">
