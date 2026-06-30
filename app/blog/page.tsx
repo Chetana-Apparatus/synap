@@ -106,6 +106,9 @@ export default async function BlogListPage(props: BlogListPageProps) {
         if (blog.id === 5 || blog.id === "5") {
             return "/blog/cochlear-implant-speech-therapy-children";
         }
+        if (blog.id === 6 || blog.id === "6") {
+            return "/blog/aphasia-understanding-and-recovery";
+        }
         return `/blog/${blog.id}`;
     };
 
@@ -115,6 +118,9 @@ export default async function BlogListPage(props: BlogListPageProps) {
         }
         if (blog.id === 5 || blog.id === "5") {
             return "/images/Blog4.jpeg";
+        }
+        if (blog.id === 6 || blog.id === "6") {
+            return "/images/blog5.webp";
         }
         if (blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy") {
             return "/images/Blog2.jpeg";
