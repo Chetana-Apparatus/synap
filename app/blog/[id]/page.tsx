@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
 
                     <div className="relative w-full aspect-video rounded-3xl overflow-hidden mb-12 shadow-lg bg-muted">
                         <img
-                            src={usesBlog3Image ? "/images/Blog%203.jpeg" : usesBlog4Image ? "/images/Blog4.jpeg" : usesBlog5Image ? "/images/Blog5.webp" : (blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy" ? "/images/Blog2.jpeg" : (blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg"))}
+                            src={usesBlog3Image ? "/images/Blog%203.jpeg" : usesBlog4Image ? "/images/Blog4.jpeg" : usesBlog5Image ? "/images/blog5.webp" : (blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy" ? "/images/Blog2.jpeg" : (blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg"))}
                             alt={blog.title}
                             className="w-full h-full object-cover"
                         />
