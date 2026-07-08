@@ -103,11 +103,30 @@ export default async function BlogListPage(props: BlogListPageProps) {
         if (blog.id === 4 || blog.id === "4") {
             return "/blog/autism-awareness-vs-acceptance-child-support-therapy";
         }
+        if (blog.id === 5 || blog.id === "5") {
+            return "/blog/cochlear-implant-speech-therapy-children";
+        }
+        if (blog.id === 6 || blog.id === "6") {
+            return "/blog/aphasia-understanding-and-recovery";
+        }
         return `/blog/${blog.id}`;
     };
 
-    const usesBlog3Image = (blog: any) =>
-        blog.id === 4 || blog.id === "4";
+    const getBlogImage = (blog: any) => {
+        if (blog.id === 4 || blog.id === "4") {
+            return "/images/Blog%203.jpeg";
+        }
+        if (blog.id === 5 || blog.id === "5") {
+            return "/images/Blog4.jpeg";
+        }
+        if (blog.id === 6 || blog.id === "6") {
+            return "/images/blog5.webp";
+        }
+        if (blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy") {
+            return "/images/Blog2.jpeg";
+        }
+        return blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg";
+    };
 
 
     return (
@@ -143,7 +162,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
                                 >
                                     <div className="relative h-56 overflow-hidden">
                                         <img
-                                            src={usesBlog3Image(blog) ? "/images/Blog%203.jpeg" : (blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy" ? "/images/Blog2.jpeg" : (blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg"))}
+                                            src={getBlogImage(blog)}
                                             alt={blog.title}
                                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
 

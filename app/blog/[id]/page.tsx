@@ -5,7 +5,6 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Calendar, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import Image from "next/image";
 
 interface BlogPageProps {
     params: Promise<{
@@ -29,6 +28,12 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
     }
     if (id === "autism-awareness-vs-acceptance-child-support-therapy") {
         blogId = "4";
+    }
+    if (id === "cochlear-implant-speech-therapy-children") {
+        blogId = "5";
+    }
+    if (id === "aphasia-understanding-and-recovery") {
+        blogId = "6";
     }
     try {
         const response = await blogApi.getById(parseInt(blogId));
@@ -72,6 +77,12 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     if (id === "autism-awareness-vs-acceptance-child-support-therapy") {
         blogId = "4";
     }
+    if (id === "cochlear-implant-speech-therapy-children") {
+        blogId = "5";
+    }
+    if (id === "aphasia-understanding-and-recovery") {
+        blogId = "6";
+    }
     let blog = null;
 
     try {
@@ -92,6 +103,8 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     }
 
     const usesBlog3Image = blog.id === 4 || blog.id === "4";
+    const usesBlog4Image = blog.id === 5 || blog.id === "5";
+    const usesBlog5Image = blog.id === 6 || blog.id === "6";
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -127,7 +140,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
 
                     <div className="relative w-full aspect-video rounded-3xl overflow-hidden mb-12 shadow-lg bg-muted">
                         <img
-                            src={usesBlog3Image ? "/images/Blog%203.jpeg" : (blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy" ? "/images/Blog2.jpeg" : (blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg"))}
+                            src={usesBlog3Image ? "/images/Blog%203.jpeg" : usesBlog4Image ? "/images/Blog4.jpeg" : usesBlog5Image ? "/images/blog5.webp" : (blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy" ? "/images/Blog2.jpeg" : (blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg"))}
                             alt={blog.title}
                             className="w-full h-full object-cover"
                         />
