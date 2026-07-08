@@ -14,7 +14,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "SynapCare Rehabilitation Center ",
   description:
-    "Holistic, compassionate, and evidence-based rehabilitation for children and adults. Specializing in speech therapy, language therapy, dysphagia treatment, and cognitive rehabilitation.",
+    "Improve communication with expert speech therapy in Aundh, Pune, helping children and adults speak with confidence and connect with the world.",
   keywords:
     "speech therapy, language therapy, swallowing therapy, dysphagia, cognitive rehabilitation, speech pathologist, audiologist",
   generator: "v0.app",

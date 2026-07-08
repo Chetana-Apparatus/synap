@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "SynapCare Rehabilitation Center Pune | Speech Neuro Pediatric Rehab",
 
   description:
-"SynapCare Rehabilitation Center in Aundh, Pune provides speech therapy, language therapy, and communication rehabilitation for children and adults.",
+"Improve communication with expert speech therapy in Aundh, Pune, helping children and adults speak with confidence and connect with the world.",
 
   keywords: [
   "speech therapy Pune",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     url: "https://www.synapcarerehab.com/",
     title: "SynapCare Rehabilitation Center Pune",
     description:
-      "Speech therapy, language therapy, swallowing therapy, cognitive rehabilitation, and neuro pediatric rehab in Aundh, Pune.",
+      "Improve communication with expert speech therapy in Aundh, Pune, helping children and adults speak with confidence and connect with the world.",
     images: [
       {
         url: "https://www.synapcarerehab.com/images/S2.webp",

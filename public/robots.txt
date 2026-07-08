@@ -1,6 +1,59 @@
+# ===================================================================
+
+# Robots.txt for Synap Care Rehabilitation Center
+
+# Website: https://www.synapcarerehab.com/
+
+# Framework: Next.js
+
+# Last Updated: July 2026
+
+# ===================================================================
+
 User-agent: *
+
 Allow: /
 
-Disallow: /cgi-bin/
+# -------------------------------------------------
+
+# Block Internal API Routes
+
+# -------------------------------------------------
+
+Disallow: /api/
+
+# -------------------------------------------------
+
+# Block Internal Search Pages
+
+# (Only if site search is enabled)
+
+# -------------------------------------------------
+
+Disallow: /search/
+
+Disallow: /*?search=
+
+Disallow: /*?s=
+
+# -------------------------------------------------
+
+# Block URL Tracking Parameters
+
+# -------------------------------------------------
+
+Disallow: /*?utm_*
+
+Disallow: /*?gclid=
+
+Disallow: /*?fbclid=
+
+Disallow: /*?msclkid=
+
+# -------------------------------------------------
+
+# Sitemap
+
+# -------------------------------------------------
 
 Sitemap: https://www.synapcarerehab.com/sitemap.xml
