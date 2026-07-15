@@ -1,66 +1,91 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
+import { toast } from "react-toastify"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Phone, Mail, MapPin } from "lucide-react"
+import {
+  DEFAULT_CONTACT_FORM_FIELDS,
+  getContactFieldPlaceholder,
+  isEmailField,
+  isMessageField,
+  isPhoneField,
+  type CmsFormField,
+} from "@/lib/contact-form"
 
-export function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  })
+interface ContactSectionProps {
+  formId?: string | null
+  fields?: CmsFormField[]
+}
 
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  })
+export function ContactSection({
+  formId = null,
+  fields = DEFAULT_CONTACT_FORM_FIELDS,
+}: ContactSectionProps) {
+  const sortedFields = useMemo(
+    () => [...fields].sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
+    [fields]
+  )
 
+  const initialValues = useMemo(() => {
+    const values: Record<string, string> = {}
+    for (const field of sortedFields) {
+      values[field.name] = ""
+    }
+    return values
+  }, [sortedFields])
+
+  const [formData, setFormData] = useState<Record<string, string>>(initialValues)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const validate = () => {
-    const newErrors: typeof errors = { name: "", email: "", phone: "", message: "" }
-    if (!formData.name.trim()) newErrors.name = "Name is required"
-    if (!formData.email.trim()) newErrors.email = "Email is required"
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Invalid email"
-    if (!formData.phone.trim()) newErrors.phone = "Phone is required"
-    if (!formData.message.trim()) newErrors.message = "Message is required"
-    setErrors(newErrors)
-    // Return true if no errors
-    return Object.values(newErrors).every((err) => err === "")
+    for (const field of sortedFields) {
+      const value = (formData[field.name] || "").trim()
+
+      if (field.required && !value) {
+        toast.error(`${field.label} is required`)
+        return false
+      }
+
+      if (value && isEmailField(field) && !/\S+@\S+\.\S+/.test(value)) {
+        toast.error("Please enter a valid email address")
+        return false
+      }
+    }
+
+    return true
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!validate()) return // stop if validation fails
+    if (!validate()) return
 
-    setIsSubmitting(true) // disable button
+    setIsSubmitting(true)
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formId,
+          data: formData,
+        }),
       })
 
       const result = await response.json()
 
       if (result.success) {
-        alert('Message sent successfully!')
-        setFormData({ name: "", email: "", phone: "", message: "" })
-        setErrors({ name: "", email: "", phone: "", message: "" })
+        toast.success("Message sent successfully!")
+        setFormData(initialValues)
       } else {
-        alert('Error: ' + result.error)
+        toast.error(result.error || "Failed to send message")
       }
     } catch (error) {
-      console.error('Error:', error)
-      alert('Failed to send message. Please try again.')
+      console.error("Error:", error)
+      toast.error("Failed to send message. Please try again.")
     } finally {
-      setIsSubmitting(false) // re-enable button
+      setIsSubmitting(false)
     }
   }
 
@@ -91,68 +116,58 @@ export function ContactSection() {
           <div className="bg-white rounded-2xl p-5 sm:p-6 lg:p-8 shadow-lg lg:shadow-2xl ring-1 ring-black/5 overflow-hidden">
 
 
-            <form onSubmit={handleSubmit} className="space-y-8 py-10">
+            <form onSubmit={handleSubmit} className="space-y-8 py-10" noValidate>
 
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Full Name
-                </label>
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="Enter your name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className={`w-full ${errors.name ? "border-red-500" : ""}`}
-                />
-                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-              </div>
+              {sortedFields.map((field) => {
+                const placeholder = getContactFieldPlaceholder(field)
+                const value = formData[field.name] || ""
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email Address
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className={`w-full ${errors.email ? "border-red-500" : ""}`}
-                />
-                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-              </div>
+                if (isMessageField(field)) {
+                  return (
+                    <div key={field.id}>
+                      <label htmlFor={field.id} className="block text-sm font-medium mb-2">
+                        {field.label}
+                      </label>
+                      <Textarea
+                        id={field.id}
+                        name={field.name}
+                        placeholder={placeholder}
+                        value={value}
+                        onChange={(e) =>
+                          setFormData((prev) => ({ ...prev, [field.name]: e.target.value }))
+                        }
+                        rows={6}
+                        className="w-full min-h-[180px] resize-none overflow-auto"
+                      />
+                    </div>
+                  )
+                }
 
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                  Phone Number
-                </label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="Enter your phone number"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className={`w-full ${errors.phone ? "border-red-500" : ""}`}
-                />
-                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
-              </div>
+                const inputType = isEmailField(field)
+                  ? "email"
+                  : isPhoneField(field) || field.valueType?.toLowerCase() === "number"
+                    ? "tel"
+                    : "text"
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  placeholder="Tell us about your needs..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={6}
-                  className="w-full min-h-[180px] resize-none overflow-auto"
-
-                />
-                {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
-              </div>
+                return (
+                  <div key={field.id}>
+                    <label htmlFor={field.id} className="block text-sm font-medium mb-2">
+                      {field.label}
+                    </label>
+                    <Input
+                      id={field.id}
+                      name={field.name}
+                      type={inputType}
+                      placeholder={placeholder}
+                      value={value}
+                      onChange={(e) =>
+                        setFormData((prev) => ({ ...prev, [field.name]: e.target.value }))
+                      }
+                      className="w-full"
+                    />
+                  </div>
+                )
+              })}
 
               <Button
                 type="submit"

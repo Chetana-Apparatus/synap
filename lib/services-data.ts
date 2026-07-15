@@ -224,7 +224,7 @@ export const services: Service[] = [
         description:
             "Our diet and nutrition services provide personalized meal planning to support health, recovery, and overall wellness. We design therapeutic diets and dysphagia-friendly nutrition plans tailored to each individual’s needs, ensuring safe, nourishing, and practical eating. Our approach combines clinical expertise with guidance for families and caregivers, helping clients achieve their nutrition goals while supporting rehabilitation and long-term well-being. Whether for recovery, chronic conditions, or dietary management, our focus is on making healthy eating safe, simple, and effective.",
         image: "/nutrition-therapy.jpg",
-        status: "coming",
+        status: "",
         alt: "Personalized diet and nutrition services at SynapCare Rehabilitation Center in Aundh Pune",
         deepDive: "Proper nutrition plays a vital role in recovery, overall health, and long-term well-being. Our diet and nutrition services provide personalised guidance to support medical conditions, rehabilitation, and healthy living.",
         clinicalFocus: {

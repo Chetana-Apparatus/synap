@@ -13,7 +13,7 @@ const services = [
   { label: "Auditory Verbal Therapy & Auditory Training", href: "/services/auditory-verbal-therapy" },
   { label: "Psychology & Behavioural Services", href: "/services/psychology-and-behavioural-services" },
   { label: "Occupational Therapy", href: "/services/occupational-therapy", status: "coming" },
-  { label: "Diet & Nutrition Services", href: "/services/diet-and-nutrition-services", status: "coming" },
+  { label: "Diet & Nutrition Services", href: "/services/diet-and-nutrition-services" },
 ]
 
 export function ServicesDropdownSimple() {

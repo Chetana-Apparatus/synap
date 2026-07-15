@@ -1,7 +1,12 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { blogApi, categoryApi, getImageUrl } from '@/lib/api';
+import {
+    cmsBlogApi,
+    cmsCategoryApi,
+    getBlogDate,
+    getBlogHeroImage,
+} from '@/lib/cms';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Calendar, ChevronRight } from 'lucide-react';
@@ -27,107 +32,44 @@ interface BlogListPageProps {
 
 export default async function BlogListPage(props: BlogListPageProps) {
     const searchParams = await props.searchParams;
-    let blogs: any[] = [];
-    let categories: any[] = [];
-    const categoryId = searchParams?.category ? parseInt(searchParams.category as string) : undefined;
-    const searchQuery = (searchParams?.search as string)?.toLowerCase() || "";
+    let blogs: Awaited<ReturnType<typeof cmsBlogApi.getAll>>['blogs'] = [];
+    let categories: Awaited<ReturnType<typeof cmsCategoryApi.getAll>>['categories'] = [];
+    const categoryId = typeof searchParams?.category === 'string' ? searchParams.category : undefined;
+    const searchQuery = (searchParams?.search as string)?.toLowerCase() || '';
 
     try {
+        const catRes = await cmsCategoryApi.getAll(1, 100);
+        categories = catRes.categories || [];
 
-        const catRes = await categoryApi.getAll(1, 100);
-        if (catRes) {
-            categories = catRes.categories || catRes.data || [];
+        const blogRes = await cmsBlogApi.getAll(1, 1000);
+        let rawBlogs = blogRes.blogs || [];
+
+        // Redirect to home if no blogs are found at all (all deleted)
+        if (rawBlogs.length === 0) {
+            redirect('/');
         }
 
+        rawBlogs = rawBlogs.filter((b) => {
+            const matchesCategory = !categoryId || b.categoryId === categoryId;
+            const matchesSearch =
+                !searchQuery ||
+                b.title?.toLowerCase().includes(searchQuery) ||
+                b.shortDescription?.toLowerCase().includes(searchQuery) ||
+                b.tags?.some((tag) => tag.toLowerCase().includes(searchQuery));
 
-        const blogRes = await blogApi.getAll(1, 1000);
+            return matchesCategory && matchesSearch;
+        });
 
-        if (blogRes) {
-            let candidates = [
-                blogRes,
-                blogRes.blogs,
-                blogRes.data,
-                blogRes.data?.blogs,
-                blogRes.data?.data
-            ];
-
-            let rawBlogs: any[] = [];
-            for (const candidate of candidates) {
-                if (Array.isArray(candidate)) {
-                    rawBlogs = candidate;
-                    break;
-                }
-            }
-
-            // Redirect to home if no blogs are found at all (all deleted)
-            if (rawBlogs.length === 0) {
-                redirect('/');
-            }
-
-
-            if (rawBlogs.length > 0) {
-                rawBlogs = rawBlogs.filter((b: any) => {
-
-                    const matchesCategory = !categoryId || b.categoryId === categoryId || b.category?.id === categoryId;
-
-
-                    const matchesSearch = !searchQuery ||
-                        b.title?.toLowerCase().includes(searchQuery) ||
-                        b.shortDescription?.toLowerCase().includes(searchQuery);
-
-                    return matchesCategory && matchesSearch;
-                });
-            }
-
-            if (rawBlogs.length > 0) {
-                blogs = rawBlogs.sort((a: any, b: any) =>
-                    new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-                );
-            }
-        }
+        blogs = rawBlogs.sort(
+            (a, b) => new Date(getBlogDate(b)).getTime() - new Date(getBlogDate(a)).getTime()
+        );
     } catch (error) {
-        console.error("Failed to fetch blog data:", error);
+        console.error('Failed to fetch blog data:', error);
     }
 
-    const getCategoryName = (id?: number) => {
-        return categories.find(c => c.id === id)?.name;
+    const getCategoryName = (id?: string) => {
+        return categories.find((c) => c.id === id)?.name;
     };
-
-    const getBlogLink = (blog: any) => {
-        if (blog.id === 2 || blog.id === "2") {
-            return "/blog/rehabilitation-journey-multidisciplinary-care-aundh-pune";
-        }
-        if (blog.id === 3 || blog.id === "3") {
-            return "/blog/life-after-stroke-recovery-beyond-therapy-pune";
-        }
-        if (blog.id === 4 || blog.id === "4") {
-            return "/blog/autism-awareness-vs-acceptance-child-support-therapy";
-        }
-        if (blog.id === 5 || blog.id === "5") {
-            return "/blog/cochlear-implant-speech-therapy-children";
-        }
-        if (blog.id === 6 || blog.id === "6") {
-            return "/blog/aphasia-understanding-and-recovery";
-        }
-        return `/blog/${blog.id}`;
-    };
-
-    const getBlogImage = (blog: any) => {
-        if (blog.id === 4 || blog.id === "4") {
-            return "/images/Blog%203.jpeg";
-        }
-        if (blog.id === 5 || blog.id === "5") {
-            return "/images/Blog4.jpeg";
-        }
-        if (blog.id === 6 || blog.id === "6") {
-            return "/images/blog5.webp";
-        }
-        if (blog.title === "Life After Stroke: Why Recovery Goes Beyond Therapy") {
-            return "/images/Blog2.jpeg";
-        }
-        return blog.image ? getImageUrl(blog.image) : "/images/Blog.jpg";
-    };
-
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -156,13 +98,13 @@ export default async function BlogListPage(props: BlogListPageProps) {
                         {blogs.length > 0 ? (
                             blogs.map((blog) => (
                                 <Link
-                                    href={getBlogLink(blog)}
+                                    href={`/blog/${blog.slug}`}
                                     key={blog.id}
                                     className={`group flex flex-col bg-white rounded-2xl overflow-hidden border border-primary/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${blogs.length === 1 ? 'max-w-md w-full' : ''}`}
                                 >
                                     <div className="relative h-56 overflow-hidden">
                                         <img
-                                            src={getBlogImage(blog)}
+                                            src={getBlogHeroImage(blog)}
                                             alt={blog.title}
                                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
 
@@ -173,7 +115,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
                                         <div className="flex items-center justify-between mb-3">
                                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                 <Calendar className="h-4 w-4" />
-                                                {new Date(blog.createdAt).toLocaleDateString('en-US', {
+                                                {new Date(getBlogDate(blog)).toLocaleDateString('en-US', {
                                                     year: 'numeric',
                                                     month: 'long',
                                                     day: 'numeric'
