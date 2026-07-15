@@ -9,6 +9,11 @@ import { ApproachSection } from "@/components/approach-section"
 import { FounderSection } from "@/components/founder-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import {
+  cmsFormApi,
+  DEFAULT_CONTACT_FORM_FIELDS,
+  type CmsFormField,
+} from "@/lib/cms"
 
 export const metadata: Metadata = {
   verification: {
@@ -58,7 +63,18 @@ export const metadata: Metadata = {
 };
 
 
-export default function Home() {
+export default async function Home() {
+  let contactFormId: string | null = null
+  let contactFields: CmsFormField[] = DEFAULT_CONTACT_FORM_FIELDS
+
+  try {
+    const contactForm = await cmsFormApi.getContactForm()
+    contactFormId = contactForm.form.id
+    contactFields = contactForm.fields
+  } catch (error) {
+    console.error("Failed to load CMS contact form:", error)
+  }
+
   return (
     <>
     {/* Google Analytics */}
@@ -211,7 +227,7 @@ export default function Home() {
       <ServicesSection />
       <ApproachSection />
       <FounderSection />
-      <ContactSection />
+      <ContactSection formId={contactFormId} fields={contactFields} />
       <Footer />
     </main>
     </>

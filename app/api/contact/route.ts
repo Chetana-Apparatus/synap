@@ -1,5 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/mail";
+import {
+  buildCmsFormSubmissionData,
+  cmsFormApi,
+  DEFAULT_CONTACT_FORM_FIELDS,
+  extractLegacyContactValues,
+  type CmsFormField,
+} from "@/lib/cms";
 
 const contactEmailTemplate = ({
   name,
@@ -122,10 +129,69 @@ padding:24px; text-align:center;">
 </html>
 `;
 
+function normalizeIncomingData(body: any): Record<string, string> {
+  // New CMS-shaped payload: { data: { Name, Email, ... } }
+  if (body?.data && typeof body.data === "object" && !Array.isArray(body.data)) {
+    const data: Record<string, string> = {};
+    for (const [key, value] of Object.entries(body.data)) {
+      data[key] = value == null ? "" : String(value);
+    }
+    return data;
+  }
+
+  // Legacy payload: { name, email, phone, message }
+  return {
+    Name: body?.name == null ? "" : String(body.name),
+    Email: body?.email == null ? "" : String(body.email),
+    Phone: body?.phone == null ? "" : String(body.phone),
+    Message: body?.message == null ? "" : String(body.message),
+  };
+}
+
+async function resolveFormFields(formId?: string | null): Promise<{
+  formId: string | null;
+  fields: CmsFormField[];
+}> {
+  try {
+    if (formId) {
+      const fields = await cmsFormApi.getFields(formId);
+      if (fields.length) return { formId, fields };
+    }
+
+    const contactForm = await cmsFormApi.getContactForm();
+    return { formId: contactForm.form.id, fields: contactForm.fields };
+  } catch (error) {
+    console.error("Failed to load CMS contact form fields:", error);
+    return { formId: formId || null, fields: DEFAULT_CONTACT_FORM_FIELDS };
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, message } = body;
+    const incoming = normalizeIncomingData(body);
+    const { formId, fields } = await resolveFormFields(body?.formId);
+
+    const missingRequired = fields.filter((field) => {
+      if (!field.required) return false;
+      return !(incoming[field.name] || "").trim();
+    });
+
+    if (missingRequired.length > 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "All required fields must be filled",
+        },
+        { status: 400 }
+      );
+    }
+
+    const legacy = extractLegacyContactValues(incoming);
+    const name = legacy.name;
+    const email = legacy.email;
+    const phone = legacy.phone;
+    const message = legacy.message;
 
     if (!name || !email || !phone || !message) {
       return NextResponse.json(
@@ -137,11 +203,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send email to website owner
+    // Persist submission in CMS when a form is available (does not replace email).
+    if (formId) {
+      try {
+        const cmsData = buildCmsFormSubmissionData(fields, incoming);
+        await cmsFormApi.submit(formId, cmsData);
+      } catch (cmsError) {
+        console.error("CMS form submission failed:", cmsError);
+        // Continue — email delivery remains the primary client notification path.
+      }
+    }
+
+    // Existing email flow — unchanged destination / transporter config.
     await transporter.sendMail({
       from: `"SynapCare Website" <synapcare1510@gmail.com>`,
-      to: "synapcare1510@gmail.com", // you receive it
-      replyTo: email, // reply goes to user
+      to: "synapcare1510@gmail.com",
+      replyTo: email,
       subject: "New Contact Form Submission",
       html: contactEmailTemplate({ name, email, phone, message }),
     });
@@ -161,5 +238,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-

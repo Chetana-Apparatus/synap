@@ -4,13 +4,13 @@ import { useRouter } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
 
 interface Category {
-    id: number;
+    id: string | number;
     name: string;
 }
 
 interface CategoryDropdownProps {
     categories: Category[];
-    currentCategoryId?: number;
+    currentCategoryId?: string | number;
 }
 
 export function CategoryDropdown({ categories, currentCategoryId }: CategoryDropdownProps) {
