@@ -4,8 +4,7 @@ import {
     cmsBlogApi,
     getBlogAuthorName,
     getBlogDate,
-    getBlogHeroImage,
-    getCmsMediaUrl,
+    getBlogStaticHeroImage,
     type CmsBlog,
 } from '@/lib/cms';
 import { Header } from '@/components/header';
@@ -22,9 +21,16 @@ interface BlogPageProps {
 // Disable caching to ensure fresh data
 export const dynamic = 'force-dynamic';
 
-async function fetchBlog(slug: string): Promise<CmsBlog | null> {
+async function fetchBlogWithIndex(slug: string): Promise<{ blog: CmsBlog; imageIndex: number } | null> {
     try {
-        return await cmsBlogApi.getBySlug(slug);
+        const blogRes = await cmsBlogApi.getAll(1, 1000);
+        const blogs = (blogRes.blogs || []).sort(
+            (a, b) => new Date(getBlogDate(b)).getTime() - new Date(getBlogDate(a)).getTime()
+        );
+        const imageIndex = blogs.findIndex((b) => b.slug === slug);
+        const blog = blogs[imageIndex] ?? (await cmsBlogApi.getBySlug(slug));
+        if (!blog?.title) return null;
+        return { blog, imageIndex: imageIndex >= 0 ? imageIndex : 0 };
     } catch (error) {
         console.error('Error fetching blog:', error);
         return null;
@@ -33,17 +39,18 @@ async function fetchBlog(slug: string): Promise<CmsBlog | null> {
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
     const { id: slug } = await params;
-    const blog = await fetchBlog(slug);
+    const result = await fetchBlogWithIndex(slug);
 
-    if (!blog || !blog.title) {
+    if (!result?.blog?.title) {
         return {
             title: 'Blog Not Found | SynapCare',
         };
     }
 
+    const { blog, imageIndex } = result;
     const title = blog.metaTitle || `${blog.title} | SynapCare Blog`;
     const description = blog.metaDescription || blog.shortDescription || undefined;
-    const image = getCmsMediaUrl(blog.ogImage || blog.heroImage, '');
+    const image = getBlogStaticHeroImage(imageIndex);
     const keywords = [
         ...(blog.tags || []),
         ...(blog.focusKeyPhrase || []),
@@ -73,13 +80,14 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
     const { id: slug } = await params;
-    const blog = await fetchBlog(slug);
+    const result = await fetchBlogWithIndex(slug);
 
-    if (!blog) {
+    if (!result) {
         notFound();
     }
 
-    const heroImage = getBlogHeroImage(blog);
+    const { blog, imageIndex } = result;
+    const heroImage = getBlogStaticHeroImage(imageIndex);
     const publishedAt = getBlogDate(blog);
     const authorName = getBlogAuthorName(blog);
 

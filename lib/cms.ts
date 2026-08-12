@@ -17,6 +17,20 @@ const CMS_MEDIA_BASE_URL = (process.env.CMS_MEDIA_BASE_URL || "").replace(/\/$/,
 
 export const BLOG_IMAGE_FALLBACK = "/images/Blog.jpg";
 
+/** Static hero images in /public/images (newest blog → index 0). */
+export const BLOG_STATIC_IMAGES = [
+  "/images/Blog6.jpg",
+  "/images/blog5.webp",
+  "/images/Blog4.jpeg",
+  "/images/Blog 3.jpeg",
+  "/images/Blog2.jpeg",
+  "/images/Blog.jpg",
+] as const;
+
+export function getBlogStaticHeroImage(index: number): string {
+  return BLOG_STATIC_IMAGES[index] ?? BLOG_IMAGE_FALLBACK;
+}
+
 export interface CmsCategory {
   id: string;
   name: string;

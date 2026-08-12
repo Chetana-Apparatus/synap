@@ -5,7 +5,7 @@ import {
     cmsBlogApi,
     cmsCategoryApi,
     getBlogDate,
-    getBlogHeroImage,
+    getBlogStaticHeroImage,
 } from '@/lib/cms';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
@@ -96,7 +96,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
 
                     <div className={blogs.length === 1 ? "flex justify-center" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"}>
                         {blogs.length > 0 ? (
-                            blogs.map((blog) => (
+                            blogs.map((blog, index) => (
                                 <Link
                                     href={`/blog/${blog.slug}`}
                                     key={blog.id}
@@ -104,7 +104,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
                                 >
                                     <div className="relative h-56 overflow-hidden">
                                         <img
-                                            src={getBlogHeroImage(blog)}
+                                            src={getBlogStaticHeroImage(index)}
                                             alt={blog.title}
                                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
 
