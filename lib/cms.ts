@@ -19,7 +19,7 @@ export const BLOG_IMAGE_FALLBACK = "/images/Blog.jpg";
 
 /** Static hero images in /public/images, keyed by existing CMS blog slug. */
 const BLOG_STATIC_IMAGES: Record<string, string> = {
-  "signs-your-child-may-need-speech-therapy": "/images/Blog7.jpeg",
+  "signs-your-child-may-need-speech-therapy": "/images/Blog 7.jpg",
   "avt-auditory-training-therapy-for-children-hearing-speech": "/images/Blog6.jpg",
   "aphasia-understanding-and-recovery": "/images/blog5.webp",
   "cochlear-implant-speech-therapy-children": "/images/Blog4.jpeg",
