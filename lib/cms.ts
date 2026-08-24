@@ -17,18 +17,18 @@ const CMS_MEDIA_BASE_URL = (process.env.CMS_MEDIA_BASE_URL || "").replace(/\/$/,
 
 export const BLOG_IMAGE_FALLBACK = "/images/Blog.jpg";
 
-/** Static hero images in /public/images (newest blog → index 0). */
-export const BLOG_STATIC_IMAGES = [
-  "/images/Blog6.jpg",
-  "/images/blog5.webp",
-  "/images/Blog4.jpeg",
-  "/images/Blog 3.jpeg",
-  "/images/Blog2.jpeg",
-  "/images/Blog.jpg",
-] as const;
+/** Static hero images in /public/images, keyed by existing CMS blog slug. */
+const BLOG_STATIC_IMAGES: Record<string, string> = {
+  "signs-your-child-may-need-speech-therapy": "/images/Blog7.jpeg",
+  "avt-auditory-training-therapy-for-children-hearing-speech": "/images/Blog6.jpg",
+  "aphasia-understanding-and-recovery": "/images/blog5.webp",
+  "cochlear-implant-speech-therapy-children": "/images/Blog4.jpeg",
+  "autism-awareness-vs-acceptance-child-support-therapy": "/images/Blog%203.jpeg",
+  "life-after-stroke-recovery-beyond-therapy-pune": "/images/Blog2.jpeg",
+};
 
-export function getBlogStaticHeroImage(index: number): string {
-  return BLOG_STATIC_IMAGES[index] ?? BLOG_IMAGE_FALLBACK;
+export function getBlogStaticHeroImage(slug: string): string {
+  return BLOG_STATIC_IMAGES[slug] ?? BLOG_IMAGE_FALLBACK;
 }
 
 export interface CmsCategory {

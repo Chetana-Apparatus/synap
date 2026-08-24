@@ -96,7 +96,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
 
                     <div className={blogs.length === 1 ? "flex justify-center" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"}>
                         {blogs.length > 0 ? (
-                            blogs.map((blog, index) => (
+                            blogs.map((blog) => (
                                 <Link
                                     href={`/blog/${blog.slug}`}
                                     key={blog.id}
@@ -104,7 +104,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
                                 >
                                     <div className="relative h-56 overflow-hidden">
                                         <img
-                                            src={getBlogStaticHeroImage(index)}
+                                            src={getBlogStaticHeroImage(blog.slug)}
                                             alt={blog.title}
                                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
 
