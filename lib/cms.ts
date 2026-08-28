@@ -17,6 +17,10 @@ const CMS_MEDIA_BASE_URL = (process.env.CMS_MEDIA_BASE_URL || "").replace(/\/$/,
 
 export const BLOG_IMAGE_FALLBACK = "/images/Blog.jpg";
 
+export function normalizeBlogSlug(slug: string): string {
+  return slug.trim();
+}
+
 /** Static hero images in /public/images, keyed by existing CMS blog slug. */
 const BLOG_STATIC_IMAGES: Record<string, string> = {
   "signs-your-child-may-need-speech-therapy": "/images/Blog 7.jpg",
@@ -25,10 +29,11 @@ const BLOG_STATIC_IMAGES: Record<string, string> = {
   "cochlear-implant-speech-therapy-children": "/images/Blog4.jpeg",
   "autism-awareness-vs-acceptance-child-support-therapy": "/images/Blog%203.jpeg",
   "life-after-stroke-recovery-beyond-therapy-pune": "/images/Blog2.jpeg",
+  "adult-speech-therapy-session-what-to-expect": "/images/blog%208.jpg",
 };
 
 export function getBlogStaticHeroImage(slug: string): string {
-  return BLOG_STATIC_IMAGES[slug] ?? BLOG_IMAGE_FALLBACK;
+  return BLOG_STATIC_IMAGES[normalizeBlogSlug(slug)] ?? BLOG_IMAGE_FALLBACK;
 }
 
 export interface CmsCategory {
@@ -295,6 +300,10 @@ export function getBlogAuthorName(blog: Pick<CmsBlog, "author">): string {
   return "SynapCare Health Team";
 }
 
+function normalizeBlog(blog: CmsBlog): CmsBlog {
+  return { ...blog, slug: normalizeBlogSlug(blog.slug) };
+}
+
 function extractBlogs(payload: any): CmsBlog[] {
   const candidates = [
     payload?.data?.blogs,
@@ -304,7 +313,9 @@ function extractBlogs(payload: any): CmsBlog[] {
   ];
 
   for (const candidate of candidates) {
-    if (Array.isArray(candidate)) return candidate as CmsBlog[];
+    if (Array.isArray(candidate)) {
+      return (candidate as CmsBlog[]).map(normalizeBlog);
+    }
   }
 
   return [];
@@ -343,14 +354,26 @@ export const cmsBlogApi = {
   },
 
   async getBySlug(slug: string) {
-    const payload = await cmsFetch<{
-      success?: boolean;
-      data?: CmsBlog;
-      blog?: CmsBlog;
-    }>(`/blogs/${encodeURIComponent(slug)}`);
+    const normalizedSlug = normalizeBlogSlug(slug);
 
-    const blog = (payload?.data || payload?.blog || payload) as CmsBlog | undefined;
-    if (!blog || !blog.title) {
+    try {
+      const payload = await cmsFetch<{
+        success?: boolean;
+        data?: CmsBlog;
+        blog?: CmsBlog;
+      }>(`/blogs/${encodeURIComponent(normalizedSlug)}`);
+
+      const blog = (payload?.data || payload?.blog || payload) as CmsBlog | undefined;
+      if (blog?.title) {
+        return normalizeBlog(blog);
+      }
+    } catch {
+      // ponytail: fallback scans getAll when CMS slug lookup fails (e.g. stray whitespace in slug)
+    }
+
+    const { blogs } = await this.getAll(1, 1000);
+    const blog = blogs.find((item) => normalizeBlogSlug(item.slug) === normalizedSlug);
+    if (!blog?.title) {
       throw new Error("Blog not found");
     }
 
