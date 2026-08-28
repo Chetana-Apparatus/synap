@@ -5,6 +5,7 @@ import {
     getBlogAuthorName,
     getBlogDate,
     getBlogStaticHeroImage,
+    normalizeBlogSlug,
     type CmsBlog,
 } from '@/lib/cms';
 import { Header } from '@/components/header';
@@ -32,7 +33,7 @@ async function fetchBlog(slug: string): Promise<CmsBlog | null> {
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
     const { id: slug } = await params;
-    const blog = await fetchBlog(slug);
+    const blog = await fetchBlog(normalizeBlogSlug(slug));
 
     if (!blog || !blog.title) {
         return {
@@ -72,7 +73,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
     const { id: slug } = await params;
-    const blog = await fetchBlog(slug);
+    const blog = await fetchBlog(normalizeBlogSlug(slug));
 
     if (!blog) {
         notFound();
