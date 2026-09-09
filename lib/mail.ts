@@ -1,7 +1,11 @@
 import nodemailer from "nodemailer";
 
-const EMAIL_USER = "synapcare1510@gmail.com";
-const EMAIL_PASS = "kvrb obdr yowi oswu";
+const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_PASS = process.env.EMAIL_PASS;
+
+if (!EMAIL_USER || !EMAIL_PASS) {
+  throw new Error("EMAIL_USER and EMAIL_PASS must be set in .env");
+}
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
