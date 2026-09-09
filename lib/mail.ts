@@ -1,29 +1,25 @@
 import nodemailer from "nodemailer";
+import type { Transporter } from "nodemailer";
 
-const EMAIL_USER = process.env.EMAIL_USER;
-const EMAIL_PASS = process.env.EMAIL_PASS;
+let transporter: Transporter | null = null;
 
-if (!EMAIL_USER || !EMAIL_PASS) {
-  throw new Error("EMAIL_USER and EMAIL_PASS must be set in .env");
-}
+export function getTransporter(): Transporter {
+  if (transporter) return transporter;
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: EMAIL_USER,
-    pass: EMAIL_PASS, // MUST be App Password
-  },
-});
+  const EMAIL_USER = process.env.EMAIL_USER;
+  const EMAIL_PASS = process.env.EMAIL_PASS;
 
-transporter.verify((error, success) => {
-  if (error) {
-    console.error("❌ Nodemailer Error:", error);
-  } else {
-    console.log("✅ Nodemailer is ready to send emails");
+  if (!EMAIL_USER || !EMAIL_PASS) {
+    throw new Error("EMAIL_USER and EMAIL_PASS must be set in .env");
   }
-  console.log("📧 MAIL TRANSPORT CONFIG:", transporter.options);
-});
 
-export { transporter };
+  transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: EMAIL_USER,
+      pass: EMAIL_PASS, // MUST be App Password
+    },
+  });
 
-
+  return transporter;
+}

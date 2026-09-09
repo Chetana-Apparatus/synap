@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { transporter } from "@/lib/mail";
+import { getTransporter } from "@/lib/mail";
 import {
   buildCmsFormSubmissionData,
   cmsFormApi,
@@ -215,7 +215,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Existing email flow — unchanged destination / transporter config.
-    await transporter.sendMail({
+    await getTransporter().sendMail({
       from: `"SynapCare Website" <synapcare1510@gmail.com>`,
       to: "synapcare1510@gmail.com",
       replyTo: email,
