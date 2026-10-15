@@ -1,12 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import {
-    cmsBlogApi,
-    cmsCategoryApi,
-    getBlogDate,
-    getBlogStaticHeroImage,
-} from '@/lib/cms';
+import { BLOGS, BLOG_CATEGORIES } from '@/lib/blogs-data';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Calendar, ChevronRight } from 'lucide-react';
@@ -23,49 +17,26 @@ export const metadata: Metadata = {
     },
 };
 
-// Disable caching to ensure fresh data
-export const dynamic = 'force-dynamic';
-
 interface BlogListPageProps {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export default async function BlogListPage(props: BlogListPageProps) {
     const searchParams = await props.searchParams;
-    let blogs: Awaited<ReturnType<typeof cmsBlogApi.getAll>>['blogs'] = [];
-    let categories: Awaited<ReturnType<typeof cmsCategoryApi.getAll>>['categories'] = [];
+    const categories = BLOG_CATEGORIES;
     const categoryId = typeof searchParams?.category === 'string' ? searchParams.category : undefined;
     const searchQuery = (searchParams?.search as string)?.toLowerCase() || '';
 
-    try {
-        const catRes = await cmsCategoryApi.getAll(1, 100);
-        categories = catRes.categories || [];
+    const blogs = BLOGS.filter((b) => {
+        const matchesCategory = !categoryId || b.categoryId === categoryId;
+        const matchesSearch =
+            !searchQuery ||
+            b.title.toLowerCase().includes(searchQuery) ||
+            b.shortDescription.toLowerCase().includes(searchQuery) ||
+            b.tags.some((tag) => tag.toLowerCase().includes(searchQuery));
 
-        const blogRes = await cmsBlogApi.getAll(1, 1000);
-        let rawBlogs = blogRes.blogs || [];
-
-        // Redirect to home if no blogs are found at all (all deleted)
-        if (rawBlogs.length === 0) {
-            redirect('/');
-        }
-
-        rawBlogs = rawBlogs.filter((b) => {
-            const matchesCategory = !categoryId || b.categoryId === categoryId;
-            const matchesSearch =
-                !searchQuery ||
-                b.title?.toLowerCase().includes(searchQuery) ||
-                b.shortDescription?.toLowerCase().includes(searchQuery) ||
-                b.tags?.some((tag) => tag.toLowerCase().includes(searchQuery));
-
-            return matchesCategory && matchesSearch;
-        });
-
-        blogs = rawBlogs.sort(
-            (a, b) => new Date(getBlogDate(b)).getTime() - new Date(getBlogDate(a)).getTime()
-        );
-    } catch (error) {
-        console.error('Failed to fetch blog data:', error);
-    }
+        return matchesCategory && matchesSearch;
+    }).sort((a, b) => new Date(b.displayDate).getTime() - new Date(a.displayDate).getTime());
 
     const getCategoryName = (id?: string) => {
         return categories.find((c) => c.id === id)?.name;
@@ -104,7 +75,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
                                 >
                                     <div className="relative h-56 overflow-hidden">
                                         <img
-                                            src={getBlogStaticHeroImage(blog.slug)}
+                                            src={blog.image}
                                             alt={blog.title}
                                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
 
@@ -115,7 +86,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
                                         <div className="flex items-center justify-between mb-3">
                                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                 <Calendar className="h-4 w-4" />
-                                                {new Date(getBlogDate(blog)).toLocaleDateString('en-US', {
+                                                {new Date(blog.displayDate).toLocaleDateString('en-US', {
                                                     year: 'numeric',
                                                     month: 'long',
                                                     day: 'numeric'

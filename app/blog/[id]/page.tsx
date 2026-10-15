@@ -1,13 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import {
-    cmsBlogApi,
-    getBlogAuthorName,
-    getBlogDate,
-    getBlogStaticHeroImage,
-    normalizeBlogSlug,
-    type CmsBlog,
-} from '@/lib/cms';
+import { BLOGS } from '@/lib/blogs-data';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Calendar, ArrowLeft } from 'lucide-react';
@@ -15,27 +8,25 @@ import Link from 'next/link';
 
 interface BlogPageProps {
     params: Promise<{
-        id: string; // Dynamic route parameter (CMS slug)
+        id: string; // Dynamic route parameter (blog slug)
     }>;
 }
 
-// Disable caching to ensure fresh data
-export const dynamic = 'force-dynamic';
+export function generateStaticParams() {
+    return BLOGS.map((blog) => ({ id: blog.slug }));
+}
 
-async function fetchBlog(slug: string): Promise<CmsBlog | null> {
-    try {
-        return await cmsBlogApi.getBySlug(slug);
-    } catch (error) {
-        console.error('Error fetching blog:', error);
-        return null;
-    }
+async function findBlog(params: BlogPageProps['params']) {
+    const { id } = await params;
+    // Old CMS links had a leading space in the slug (/blog/%20adult-...).
+    const slug = decodeURIComponent(id).trim();
+    return BLOGS.find((blog) => blog.slug === slug);
 }
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
-    const { id: slug } = await params;
-    const blog = await fetchBlog(normalizeBlogSlug(slug));
+    const blog = await findBlog(params);
 
-    if (!blog || !blog.title) {
+    if (!blog) {
         return {
             title: 'Blog Not Found | SynapCare',
         };
@@ -43,7 +34,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
     const title = blog.metaTitle || `${blog.title} | SynapCare Blog`;
     const description = blog.metaDescription || blog.shortDescription || undefined;
-    const image = getBlogStaticHeroImage(blog.slug);
+    const image = blog.image;
     const keywords = [
         ...(blog.tags || []),
         ...(blog.focusKeyPhrase || []),
@@ -59,7 +50,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
             type: 'article',
             url: `/blog/${blog.slug}`,
             images: image ? [image] : [],
-            publishedTime: blog.publishDate || blog.displayDate || blog.createdAt,
+            publishedTime: blog.publishDate,
             tags: blog.tags,
         },
         twitter: {
@@ -72,16 +63,15 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 }
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
-    const { id: slug } = await params;
-    const blog = await fetchBlog(normalizeBlogSlug(slug));
+    const blog = await findBlog(params);
 
     if (!blog) {
         notFound();
     }
 
-    const heroImage = getBlogStaticHeroImage(blog.slug);
-    const publishedAt = getBlogDate(blog);
-    const authorName = getBlogAuthorName(blog);
+    const heroImage = blog.image;
+    const publishedAt = blog.displayDate;
+    const authorName = 'SynapCare Health Team';
 
     return (
         <div className="flex flex-col min-h-screen">

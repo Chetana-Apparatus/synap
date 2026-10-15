@@ -35,10 +35,8 @@ pipeline {
             steps {
                 // Secret file credential ID: synap-env
                 // Upload a .env file in Jenkins → Credentials with these keys:
-                //   CMS_BASE_URL=
-                //   CMS_API_KEY=
-                //   CMS_WEBSITE_ID=
-                //   CMS_MEDIA_BASE_URL=
+                //   EMAIL_USER=
+                //   EMAIL_PASS=
                 withCredentials([file(credentialsId: 'synap-env', variable: 'ENV_FILE')]) {
                     sh '''
                       docker run -d \

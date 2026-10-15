@@ -7,27 +7,15 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Phone, Mail, MapPin } from "lucide-react"
 import {
-  DEFAULT_CONTACT_FORM_FIELDS,
+  CONTACT_FORM_FIELDS,
   getContactFieldPlaceholder,
   isEmailField,
   isMessageField,
   isPhoneField,
-  type CmsFormField,
 } from "@/lib/contact-form"
 
-interface ContactSectionProps {
-  formId?: string | null
-  fields?: CmsFormField[]
-}
-
-export function ContactSection({
-  formId = null,
-  fields = DEFAULT_CONTACT_FORM_FIELDS,
-}: ContactSectionProps) {
-  const sortedFields = useMemo(
-    () => [...fields].sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
-    [fields]
-  )
+export function ContactSection() {
+  const sortedFields = CONTACT_FORM_FIELDS
 
   const initialValues = useMemo(() => {
     const values: Record<string, string> = {}
@@ -67,10 +55,7 @@ export function ContactSection({
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          formId,
-          data: formData,
-        }),
+        body: JSON.stringify({ data: formData }),
       })
 
       const result = await response.json()
