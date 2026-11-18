@@ -113,16 +113,10 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
                         />
                     </div>
 
-                    <div className="prose prose-lg max-w-none prose-headings:text-primary prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-2xl">
-                        {/*
-              Using dangerouslySetInnerHTML because CMS content is authored as HTML.
-              Content is rendered exactly as received to preserve rich text structure.
-            */}
-                        <div
-                            className="blog-content leading-relaxed text-foreground"
-                            dangerouslySetInnerHTML={{ __html: blog.body || '' }}
-                        />
-                    </div>
+                    <div
+                        className="blog-content text-base md:text-lg"
+                        dangerouslySetInnerHTML={{ __html: blog.body || '' }}
+                    />
                 </article>
             </main>
 
