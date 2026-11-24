@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} font-sans antialiased`}>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-TZB6PLRY40"
+          src="https://www.googletagmanager.com/gtm.js?id=G-BGEYY9TK7T"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -41,7 +41,6 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-TZB6PLRY40');
           `}
         </Script>
         {children}
